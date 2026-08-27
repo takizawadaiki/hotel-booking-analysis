@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Booking Ledger — Hotel Demand & Cancellation Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink:#1C2B3A;
+    --ink-soft:#3B4C5E;
+    --paper:#EFEDE6;
+    --paper-raised:#F8F6F1;
+    --brass:#A8793A;
+    --brass-dark:#8A6329;
+    --city:#3B5570;
+    --resort:#2F7566;
+    --alert:#A63D31;
+    --line:#D9D4C7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px 80px;}
+
+  header{padding:56px 0 32px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass-dark);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Spectral',serif;
+    font-weight:600;
+    font-size:44px;
+    line-height:1.08;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  .subhead{
+    font-size:16px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:620px;
+    margin:0 0 28px;
+  }
+
+  /* --- Key tag toggle --- */
+  .keytag-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .keytag-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    margin-right:4px;
+  }
+  .keytag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 18px 9px 16px;
+    border-radius:3px 10px 10px 3px;
+    border:1.5px solid var(--ink);
+    background:var(--paper-raised);
+    color:var(--ink);
+    cursor:pointer;
+    position:relative;
+    transition:all .18s ease;
+    letter-spacing:0.02em;
+  }
+  .keytag::before{
+    content:'';
+    position:absolute;
+    left:-5px;top:50%;
+    transform:translateY(-50%);
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1.5px solid var(--ink);
+  }
+  .keytag:hover{background:#fff;}
+  .keytag.active{
+    background:var(--ink);
+    color:var(--paper-raised);
+    border-color:var(--ink);
+  }
+  .keytag.active::before{background:var(--ink);}
+  .keytag[data-hotel="City Hotel"].active{background:var(--city);border-color:var(--city);}
+  .keytag[data-hotel="Resort Hotel"].active{background:var(--resort);border-color:var(--resort);}
+
+  /* --- KPI strip --- */
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin:36px 0 0;
+  }
+  .kpi{
+    background:var(--paper-raised);
+    padding:22px 20px;
+  }
+  .kpi-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .kpi-value{
+    font-family:'Spectral',serif;
+    font-size:32px;
+    font-weight:600;
+    line-height:1;
+  }
+  .kpi-value .unit{font-size:17px;font-weight:500;color:var(--ink-soft);}
+
+  section{padding:52px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--brass-dark);
+    font-weight:600;
+    letter-spacing:0.1em;
+    margin-bottom:10px;
+  }
+  h2{
+    font-family:'Spectral',serif;
+    font-size:26px;
+    font-weight:600;
+    margin:0 0 8px;
+    letter-spacing:-0.005em;
+  }
+  .section-sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 28px;max-width:580px;line-height:1.55;}
+  .chart-box{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    padding:24px 20px 12px;
+    margin-bottom:20px;
+  }
+  .chart-box canvas{max-height:340px;}
+
+  .insight{
+    display:flex;
+    gap:14px;
+    padding:16px 18px;
+    background:rgba(168,121,58,0.08);
+    border-left:3px solid var(--brass);
+    font-size:14.5px;
+    line-height:1.6;
+  }
+  .insight strong{color:var(--ink);}
+  .insight-icon{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    color:var(--brass-dark);
+    flex-shrink:0;
+  }
+
+  .stamp{
+    border:1.5px dashed var(--alert);
+    padding:22px 24px;
+    margin-top:8px;
+    position:relative;
+  }
+  .stamp-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--alert);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .stamp p{margin:0;font-size:14.5px;line-height:1.65;color:var(--ink-soft);}
+  .stamp strong{color:var(--ink);}
+
+  footer{padding:40px 0 0;}
+  footer p{font-size:13px;color:var(--ink-soft);line-height:1.7;}
+  footer a{color:var(--brass-dark);}
+  .tools-row{
+    display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 24px;
+  }
+  .tool-pill{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    padding:5px 12px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    h1{font-size:32px;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .wrap{padding:0 16px 60px;}
+    header{padding:36px 0 28px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Data Analysis — SQL &amp; Interactive Visualization</div>
+    <h1>The Booking Ledger</h1>
+    <p class="subhead">Which hotel bookings are actually reliable, and where should revenue-protection efforts focus? An analysis of 119,389 real bookings across a city hotel and a resort property.</p>
+    <div class="keytag-row">
+      <span class="keytag-label">Filter:</span>
+      <button class="keytag active" data-hotel="All">⌂ Both Hotels</button>
+      <button class="keytag" data-hotel="City Hotel">⌂ City Hotel</button>
+      <button class="keytag" data-hotel="Resort Hotel">⌂ Resort Hotel</button>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">Total Bookings</div>
+        <div class="kpi-value" id="kpi-total">—</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Cancellation Rate</div>
+        <div class="kpi-value" id="kpi-cancel">—</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Avg. Daily Rate</div>
+        <div class="kpi-value" id="kpi-adr">—</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Avg. Lead Time</div>
+        <div class="kpi-value" id="kpi-lead">—</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-num">01 — RISK BY SEGMENT</div>
+    <h2>Group bookings cancel at more than double the average</h2>
+    <p class="section-sub">Cancellation rate by market segment. Sorted highest to lowest risk.</p>
+    <div class="chart-box"><canvas id="chartSegment"></canvas></div>
+    <div class="insight">
+      <span class="insight-icon">→</span>
+      <span id="insight-segment">Loading…</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">02 — SEASONALITY</div>
+    <h2>Demand and price move together — but not identically by property</h2>
+    <p class="section-sub">Average daily rate by arrival month, with booking volume shown for context. Toggle the hotel filter above to compare.</p>
+    <div class="chart-box"><canvas id="chartSeasonal"></canvas></div>
+    <div class="insight">
+      <span class="insight-icon">→</span>
+      <span id="insight-seasonal">Loading…</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">03 — CHANNEL ECONOMICS</div>
+    <h2>The channel bringing the most revenue also brings the most risk</h2>
+    <p class="section-sub">Realized revenue by distribution channel (bars), with cancellation rate overlaid (line).</p>
+    <div class="chart-box"><canvas id="chartChannel"></canvas></div>
+    <div class="insight">
+      <span class="insight-icon">→</span>
+      <span id="insight-channel">Loading…</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-num">04 — BOOKING WINDOW</div>
+    <h2>The earlier the booking, the less reliable it is</h2>
+    <p class="section-sub">Cancellation rate climbs almost linearly with how far in advance a booking is made.</p>
+    <div class="chart-box"><canvas id="chartLeadtime"></canvas></div>
+    <div class="insight">
+      <span class="insight-icon">→</span>
+      <span id="insight-leadtime">Loading…</span>
+    </div>
+
+    <div class="stamp">
+      <div class="stamp-label">⚠ Data Quality Note</div>
+      <p>Bookings marked <strong>"Non Refund"</strong> show a <strong id="stamp-rate">—</strong> cancellation rate — nearly all of them. This is <em>not</em> a signal that non-refundable deposits cause cancellations (guests forfeiting money makes no business sense as a driver). It's a known artifact in how this dataset's <code>reservation_status</code> field was recorded. Worth flagging as a reminder to sanity-check counter-intuitive findings against how the underlying data was actually collected — a number can be technically correct and still misleading.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="section-num">METHODOLOGY</div>
+    <p>Built by loading the raw dataset into SQLite and answering each business question with SQL (heavy use of <code>GROUP BY</code>, aggregate functions, and <code>CASE WHEN</code> bucketing), then visualizing results interactively here. Dataset: 119,389 bookings from a city hotel (Lisbon) and resort hotel (Algarve), July 2015–August 2017 — Antonio, Almeida &amp; Nunes (2019), <em>Data in Brief</em>. Original prices in EUR, converted to CAD at 1 EUR = 1.61 CAD (Aug 2026 rate) for a Canadian audience.</p>
+    <div class="tools-row">
+      <span class="tool-pill">SQL / SQLite</span>
+      <span class="tool-pill">Python</span>
+      <span class="tool-pill">Chart.js</span>
+      <span class="tool-pill">119,389 rows</span>
+    </div>
+    <p><a href="analysis_queries.sql">→ View all SQL queries used in this analysis</a></p>
+  </footer>
+
+</div>
+
+<script>
+const DATA = {"All": {"kpis": {"total": 119389.0, "cancel_rate": 37.0, "avg_adr": 160.98, "avg_lead": 104.0}, "segment": [{"market_segment": "Groups", "total": 19811, "cancel_rate": 61.1}, {"market_segment": "Online TA", "total": 56477, "cancel_rate": 36.7}, {"market_segment": "Offline TA/TO", "total": 24218, "cancel_rate": 34.3}, {"market_segment": "Aviation", "total": 237, "cancel_rate": 21.9}, {"market_segment": "Corporate", "total": 5295, "cancel_rate": 18.7}, {"market_segment": "Direct", "total": 12606, "cancel_rate": 15.3}, {"market_segment": "Complementary", "total": 743, "cancel_rate": 13.1}], "seasonal": [{"month": "January", "adr": 107.87, "bookings": 4122}, {"month": "February", "adr": 116.6, "bookings": 5372}, {"month": "March", "adr": 124.5, "bookings": 6645}, {"month": "April", "adr": 157.59, "bookings": 6565}, {"month": "May", "adr": 168.79, "bookings": 7114}, {"month": "June", "adr": 184.49, "bookings": 6404}, {"month": "July", "adr": 208.09, "bookings": 7919}, {"month": "August", "adr": 228.76, "bookings": 8638}, {"month": "September", "adr": 172.72, "bookings": 6392}, {"month": "October", "adr": 139.8, "bookings": 6914}, {"month": "November", "adr": 113.52, "bookings": 4672}, {"month": "December", "adr": 127.06, "bookings": 4409}], "channel": [{"channel": "TA/TO", "revenue": 9442919.0, "cancel_rate": 41.0, "total": 97869}, {"channel": "Direct", "revenue": 2063690.0, "cancel_rate": 17.5, "total": 14645}, {"channel": "Corporate", "revenue": 563325.0, "cancel_rate": 22.1, "total": 6677}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 9.6, "total": 19746}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 27.9, "total": 18960}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 38.5, "total": 33323}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 51.1, "total": 47360}], "deposit": [{"deposit_type": "Non Refund", "total": 14586, "cancel_rate": 99.4}, {"deposit_type": "No Deposit", "total": 104641, "cancel_rate": 28.4}, {"deposit_type": "Refundable", "total": 162, "cancel_rate": 22.2}]}, "City Hotel": {"kpis": {"total": 79329.0, "cancel_rate": 41.7, "avg_adr": 170.26, "avg_lead": 109.7}, "segment": [{"market_segment": "Groups", "total": 13975, "cancel_rate": 68.9}, {"market_segment": "Offline TA/TO", "total": 16746, "cancel_rate": 42.8}, {"market_segment": "Online TA", "total": 38748, "cancel_rate": 37.4}, {"market_segment": "Aviation", "total": 237, "cancel_rate": 21.9}, {"market_segment": "Corporate", "total": 2986, "cancel_rate": 21.5}, {"market_segment": "Direct", "total": 6093, "cancel_rate": 17.3}, {"market_segment": "Complementary", "total": 542, "cancel_rate": 11.8}], "seasonal": [{"month": "January", "adr": 132.28, "bookings": 2254}, {"month": "February", "adr": 138.75, "bookings": 3064}, {"month": "March", "adr": 145.17, "bookings": 4072}, {"month": "April", "adr": 180.09, "bookings": 4015}, {"month": "May", "adr": 193.92, "bookings": 4579}, {"month": "June", "adr": 189.5, "bookings": 4366}, {"month": "July", "adr": 186.05, "bookings": 4782}, {"month": "August", "adr": 190.64, "bookings": 5381}, {"month": "September", "adr": 181.29, "bookings": 4290}, {"month": "October", "adr": 163.82, "bookings": 4337}, {"month": "November", "adr": 139.27, "bookings": 2696}, {"month": "December", "adr": 141.45, "bookings": 2392}], "channel": [{"channel": "TA/TO", "revenue": 6504661.0, "cancel_rate": 45.0, "total": 68944}, {"channel": "Direct", "revenue": 986159.0, "cancel_rate": 18.2, "total": 6780}, {"channel": "Corporate", "revenue": 349420.0, "cancel_rate": 23.1, "total": 3408}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 12.2, "total": 10808}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 30.9, "total": 12554}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 40.7, "total": 23529}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 56.5, "total": 32438}], "deposit": [{"deposit_type": "Non Refund", "total": 12867, "cancel_rate": 99.8}, {"deposit_type": "Refundable", "total": 20, "cancel_rate": 70.0}, {"deposit_type": "No Deposit", "total": 66442, "cancel_rate": 30.5}]}, "Resort Hotel": {"kpis": {"total": 40060.0, "cancel_rate": 27.8, "avg_adr": 146.17, "avg_lead": 92.7}, "segment": [{"market_segment": "Groups", "total": 5836, "cancel_rate": 42.4}, {"market_segment": "Online TA", "total": 17729, "cancel_rate": 35.2}, {"market_segment": "Complementary", "total": 201, "cancel_rate": 16.4}, {"market_segment": "Offline TA/TO", "total": 7472, "cancel_rate": 15.2}, {"market_segment": "Corporate", "total": 2309, "cancel_rate": 15.2}, {"market_segment": "Direct", "total": 6513, "cancel_rate": 13.5}], "seasonal": [{"month": "January", "adr": 78.42, "bookings": 1868}, {"month": "February", "adr": 87.18, "bookings": 2308}, {"month": "March", "adr": 91.79, "bookings": 2573}, {"month": "April", "adr": 122.15, "bookings": 2550}, {"month": "May", "adr": 123.42, "bookings": 2535}, {"month": "June", "adr": 173.75, "bookings": 2038}, {"month": "July", "adr": 241.69, "bookings": 3137}, {"month": "August", "adr": 291.75, "bookings": 3257}, {"month": "September", "adr": 155.24, "bookings": 2102}, {"month": "October", "adr": 99.39, "bookings": 2577}, {"month": "November", "adr": 78.37, "bookings": 1976}, {"month": "December", "adr": 110.0, "bookings": 2017}], "channel": [{"channel": "TA/TO", "revenue": 2938256.0, "cancel_rate": 31.5, "total": 28925}, {"channel": "Direct", "revenue": 1077531.0, "cancel_rate": 16.8, "total": 7865}, {"channel": "Corporate", "revenue": 213905.0, "cancel_rate": 21.0, "total": 3269}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 6.5, "total": 8938}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 21.9, "total": 6406}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 33.1, "total": 9794}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 39.5, "total": 14922}], "deposit": [{"deposit_type": "Non Refund", "total": 1719, "cancel_rate": 96.0}, {"deposit_type": "No Deposit", "total": 38199, "cancel_rate": 24.7}, {"deposit_type": "Refundable", "total": 142, "cancel_rate": 15.5}]}};
+
+const COLORS = { all: '#A8793A', city: '#3B5570', resort: '#2F7566', alert: '#A63D31', ink: '#1C2B3A' };
+let currentHotel = 'All';
+let charts = {};
+
+function colorFor(hotel){
+  if(hotel === 'City Hotel') return COLORS.city;
+  if(hotel === 'Resort Hotel') return COLORS.resort;
+  return COLORS.all;
+}
+
+function fmtNum(n){ return n.toLocaleString('en-US'); }
+
+function render(hotel){
+  const d = DATA[hotel];
+  const c = colorFor(hotel);
+
+  document.getElementById('kpi-total').innerHTML = fmtNum(Math.round(d.kpis.total));
+  document.getElementById('kpi-cancel').innerHTML = d.kpis.cancel_rate + '<span class="unit">%</span>';
+  document.getElementById('kpi-adr').innerHTML = 'CA$' + d.kpis.avg_adr;
+  document.getElementById('kpi-lead').innerHTML = d.kpis.avg_lead + '<span class="unit"> days</span>';
+
+  // --- Chart 1: Segment ---
+  const segLabels = d.segment.map(s => s.market_segment);
+  const segRates = d.segment.map(s => s.cancel_rate);
+  const segColors = segRates.map((r,i) => i===0 ? COLORS.alert : c);
+
+  if(charts.segment) charts.segment.destroy();
+  charts.segment = new Chart(document.getElementById('chartSegment'), {
+    type: 'bar',
+    data: { labels: segLabels, datasets: [{ data: segRates, backgroundColor: segColors, borderRadius: 2, barThickness: 22 }] },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: {display:false}, tooltip:{callbacks:{label:(ctx)=>ctx.parsed.x+'% cancellation rate'}} },
+      scales: {
+        x: { max: 70, ticks:{callback:v=>v+'%'}, grid:{color:'#D9D4C7'} },
+        y: { grid:{display:false} }
+      }
+    }
+  });
+  const top = d.segment[0];
+  document.getElementById('insight-segment').innerHTML =
+    `<strong>${top.market_segment}</strong> bookings cancel at <strong>${top.cancel_rate}%</strong> — the highest of any segment, and roughly ${(top.cancel_rate/d.segment[d.segment.length-1].cancel_rate).toFixed(1)}x the rate of the most reliable segment (${d.segment[d.segment.length-1].market_segment}, ${d.segment[d.segment.length-1].cancel_rate}%).`;
+
+  // --- Chart 2: Seasonal ---
+  const monthLabels = d.seasonal.map(s => s.month.slice(0,3));
+  const adrData = d.seasonal.map(s => s.adr);
+  const bookingData = d.seasonal.map(s => s.bookings);
+
+  if(charts.seasonal) charts.seasonal.destroy();
+  charts.seasonal = new Chart(document.getElementById('chartSeasonal'), {
+    data: {
+      labels: monthLabels,
+      datasets: [
+        { type:'bar', label:'Bookings', data: bookingData, backgroundColor:'#D9D4C7', yAxisID:'y1', borderRadius:2, order:2 },
+        { type:'line', label:'Avg Daily Rate (CA$)', data: adrData, borderColor: c, backgroundColor: c+'22', fill:true, tension:0.35, yAxisID:'y', pointRadius:3, pointBackgroundColor:c, borderWidth:2.5, order:1 }
+      ]
+    },
+    options: {
+      plugins:{ legend:{position:'top', align:'end', labels:{boxWidth:10,font:{family:"'IBM Plex Sans'",size:11}}} },
+      scales: {
+        y: { position:'left', title:{display:true,text:'CA$ ADR'}, grid:{color:'#D9D4C7'} },
+        y1: { position:'right', title:{display:true,text:'Bookings'}, grid:{display:false} }
+      }
+    }
+  });
+  const peakMonth = d.seasonal.reduce((a,b)=> b.adr > a.adr ? b : a);
+  const lowMonth = d.seasonal.reduce((a,b)=> b.adr < a.adr ? b : a);
+  document.getElementById('insight-seasonal').innerHTML =
+    `Rates peak in <strong>${peakMonth.month}</strong> (CA$${peakMonth.adr}) and bottom out in <strong>${lowMonth.month}</strong> (CA$${lowMonth.adr}) — a ${Math.round((peakMonth.adr/lowMonth.adr - 1)*100)}% swing across the year.`;
+
+  // --- Chart 3: Channel ---
+  const chLabels = d.channel.map(ch => ch.channel);
+  const chRevenue = d.channel.map(ch => ch.revenue/1000);
+  const chCancel = d.channel.map(ch => ch.cancel_rate);
+
+  if(charts.channel) charts.channel.destroy();
+  charts.channel = new Chart(document.getElementById('chartChannel'), {
+    data: {
+      labels: chLabels,
+      datasets: [
+        { type:'bar', label:'Revenue (CA$ thousands)', data: chRevenue, backgroundColor: c, yAxisID:'y', borderRadius:3, order:2 },
+        { type:'line', label:'Cancellation Rate (%)', data: chCancel, borderColor: COLORS.alert, backgroundColor: COLORS.alert, yAxisID:'y1', tension:0.3, pointRadius:5, borderWidth:2, order:1 }
+      ]
+    },
+    options: {
+      plugins:{ legend:{position:'top', align:'end', labels:{boxWidth:10,font:{family:"'IBM Plex Sans'",size:11}}} },
+      scales: {
+        y: { position:'left', title:{display:true,text:'CA$ thousands'}, grid:{color:'#D9D4C7'} },
+        y1: { position:'right', title:{display:true,text:'Cancel %'}, grid:{display:false}, min:0, max:60 }
+      }
+    }
+  });
+  const topChannel = d.channel[0];
+  document.getElementById('insight-channel').innerHTML =
+    `<strong>${topChannel.channel}</strong> generates CA$${(topChannel.revenue/1000).toFixed(0)}k in realized revenue — by far the most of any channel — but cancels at <strong>${topChannel.cancel_rate}%</strong>, notably higher than Direct bookings.`;
+
+  // --- Chart 4: Lead time ---
+  const ltLabels = d.leadtime.map(l => l.bucket);
+  const ltRates = d.leadtime.map(l => l.cancel_rate);
+  const ltColors = ltLabels.map((l,i) => {
+    const shade = ['#D9D4C7', c+'99', c+'CC', COLORS.alert];
+    return shade[i] || c;
+  });
+
+  if(charts.leadtime) charts.leadtime.destroy();
+  charts.leadtime = new Chart(document.getElementById('chartLeadtime'), {
+    type:'bar',
+    data: { labels: ltLabels, datasets:[{ data: ltRates, backgroundColor: ltColors, borderRadius:3 }] },
+    options: {
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:(ctx)=>ctx.parsed.y+'% cancellation rate'}} },
+      scales: { y:{ max:60, ticks:{callback:v=>v+'%'}, grid:{color:'#D9D4C7'} }, x:{grid:{display:false}} }
+    }
+  });
+  const first = d.leadtime[0], last = d.leadtime[d.leadtime.length-1];
+  document.getElementById('insight-leadtime').innerHTML =
+    `Bookings made ${last.bucket} in advance cancel at <strong>${last.cancel_rate}%</strong> — over ${(last.cancel_rate/first.cancel_rate).toFixed(1)}x the rate of bookings made ${first.bucket} out (${first.cancel_rate}%).`;
+
+  // Data quality stamp
+  const nonRefund = d.deposit.find(x => x.deposit_type === 'Non Refund');
+  if(nonRefund) document.getElementById('stamp-rate').textContent = nonRefund.cancel_rate + '%';
+}
+
+document.querySelectorAll('.keytag').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.keytag').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentHotel = btn.dataset.hotel;
+    render(currentHotel);
+  });
+});
+
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#3B4C5E';
+
+render('All');
+</script>
+</body>
+</html>
