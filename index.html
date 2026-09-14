@@ -9,16 +9,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root{
-    --ink:#1C2B3A;
-    --ink-soft:#3B4C5E;
-    --paper:#EFEDE6;
-    --paper-raised:#F8F6F1;
-    --brass:#A8793A;
-    --brass-dark:#8A6329;
-    --city:#3B5570;
-    --resort:#2F7566;
-    --alert:#A63D31;
-    --line:#D9D4C7;
+    --ink:#f0e9dc;
+    --ink-soft:#bdb29e;
+    --paper:#15130f;
+    --paper-raised:#211e17;
+    --brass:#dbb187;
+    --brass-dark:#dbb187;
+    --city:#b5bed3;
+    --resort:#97c4b1;
+    --alert:#f29c7b;
+    --line:#463b2d;
   }
   *{box-sizing:border-box;}
   body{
@@ -212,14 +212,34 @@
     header{padding:36px 0 28px;}
   }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* Portfolio-wide dark editorial design. Existing analysis logic is retained. */
+:root{color-scheme:dark;--dt-bg:#10140f;--dt-panel:#1a2117;--dt-line:#35402d;--dt-text:#eef0e5;--dt-muted:#a6b29b;--dt-head:'Space Grotesk',sans-serif}
+body{background:var(--dt-bg);color:var(--dt-text);-webkit-font-smoothing:antialiased}::selection{background:#79513a;color:#fff}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--dt-accent);outline-offset:4px}button,input,select{accent-color:var(--dt-accent)}
+.dt-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1440px;margin:auto;padding:24px 40px;border-bottom:1px solid var(--dt-line);font:11px 'DM Sans',sans-serif;color:var(--dt-muted)}.dt-nav a{color:var(--dt-text);text-decoration:none}.dt-brand{display:flex;align-items:center;gap:12px;font:500 16px var(--dt-head);letter-spacing:-.5px}.dt-brand b{background:var(--dt-accent);color:#151b12;display:grid;place-items:center;width:34px;height:35px;font:500 23px var(--dt-head);letter-spacing:-3px}.dt-nav .dt-back{font-size:11px;color:var(--dt-muted)}.dt-nav .dt-back:hover{color:var(--dt-accent)}
+.dt-editorial{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;max-width:1360px;margin:0 auto;padding:48px 40px 45px;border-bottom:1px solid var(--dt-line)}.dt-overline{font:9px 'DM Sans',sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:var(--dt-accent);margin:0 0 24px}.dt-overline:before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--dt-accent);margin-right:10px}.dt-editorial h1,.dt-editorial h2{font:500 clamp(44px,5.7vw,81px)/1.04 var(--dt-head);letter-spacing:-.06em;text-transform:none;color:var(--dt-text);margin:0 0 24px;border:0;padding:0}.dt-editorial h1 em,.dt-editorial h2 em{font-family:Georgia,serif;font-weight:400;color:var(--dt-accent)}.dt-editorial .dt-deck{font:13px/1.9 'DM Sans',sans-serif;color:var(--dt-muted);max-width:470px;margin:0}.dt-art{position:relative;border-left:1px solid var(--dt-line);height:300px;min-width:0}.dt-art svg{width:100%;height:100%;display:block}.dt-art-label{position:absolute;top:0;left:20px;font:8px 'DM Sans',sans-serif;letter-spacing:1.3px;color:var(--dt-muted)}.dt-art-foot{position:absolute;bottom:0;left:20px;font:8px 'DM Sans',sans-serif;letter-spacing:1.3px;color:var(--dt-accent)}
+.dt-footer{border-top:1px solid var(--dt-line);padding:25px 40px;display:flex;justify-content:space-between;gap:20px;color:var(--dt-muted);font:10px 'DM Sans',sans-serif;max-width:1440px;margin:40px auto 0}.dt-footer a{color:var(--dt-accent)}
+@media(max-width:760px){.dt-nav{padding:20px;gap:15px}.dt-nav .dt-project-label{display:none}.dt-brand{font-size:14px}.dt-editorial{grid-template-columns:1fr;padding:32px 22px;gap:24px}.dt-editorial h1,.dt-editorial h2{font-size:clamp(38px,10vw,65px)}.dt-art{height:220px;border-left:0;border-top:1px solid var(--dt-line);padding-top:12px}.dt-art-label{left:0;top:12px;font-size:7px}.dt-art-foot{left:0;font-size:7px}.dt-footer{padding:22px;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+:root{--dt-accent:#e0b48b}
+
+.wrap{max-width:1250px;padding:0 40px 65px}.wrap>header{padding:0;border:0}.wrap>header .eyebrow{display:none}.wrap>header h1{font:500 clamp(50px,6vw,86px)/1.03 var(--dt-head);text-transform:none;letter-spacing:-.065em}.wrap>header h1 em{font-family:Georgia,serif;color:var(--dt-accent);font-weight:400}.wrap>header .dt-editorial{padding:45px 0;border-bottom:0}.wrap>header .dt-editorial .subhead{font:13px/1.9 'DM Sans',sans-serif;max-width:500px;color:var(--ink-soft);margin:0}.tag-row,.keytag-row{border-top:1px solid var(--line);padding:24px 0;margin:0}.price-tag,.keytag{clip-path:none;border-radius:30px;border:1px solid var(--line);padding:9px 16px;margin:0;font:11px 'DM Sans',sans-serif;background:transparent;color:var(--ink)}.price-tag:after,.keytag:before,.keytag:after{display:none}.price-tag.active,.keytag.active{background:var(--dt-accent);color:#1b2215;border-color:var(--dt-accent)}.tag-label,.keytag-label{font-size:9px;margin-right:10px}.kpi-grid{gap:1px;border:1px solid var(--line);background:var(--line);margin:0 0 30px}.kpi{background:var(--dt-panel);padding:26px;border:0;border-radius:0}.kpi-label{font:9px 'DM Sans',sans-serif;letter-spacing:1.1px}.kpi-value{font:400 clamp(28px,3.5vw,47px) var(--dt-head);letter-spacing:-2px;color:var(--dt-accent)}.wrap>section{border-top:1px solid var(--line);padding-top:35px;margin-top:50px}.section-num{font:9px 'DM Sans',sans-serif;letter-spacing:1.6px;color:var(--dt-accent);margin-bottom:15px}.wrap h2{font:500 clamp(25px,3vw,39px)/1.15 var(--dt-head);letter-spacing:-1.3px;max-width:850px}.section-sub{font:12px/1.8 'DM Sans',sans-serif;color:var(--ink-soft)}.chart-box{background:var(--dt-panel);border:1px solid var(--line);border-radius:0;padding:26px;margin-top:25px}.insight{background:var(--dt-panel);border:1px solid var(--line);border-left:2px solid var(--dt-accent);padding:21px 24px;font:13px/1.8 'DM Sans',sans-serif}.stamp{background:#292219;border-color:#6c563b;transform:none;border-radius:0}.stamp p{color:#ccbea7}.wrap footer{border-top:1px solid var(--line);color:var(--ink-soft);font:12px/1.9 'DM Sans',sans-serif}.tool-pill{border-color:var(--line);color:var(--ink-soft)}
+@media(max-width:760px){.wrap{padding:0 20px 40px}.wrap>header .dt-editorial{padding-top:30px}.kpi-grid{grid-template-columns:repeat(2,1fr)}.kpi{padding:20px}.kpi-value{font-size:32px}.chart-box{padding:18px 10px}.wrap>section{margin-top:35px}.tag-row,.keytag-row{gap:8px}.wrap h2{font-size:28px}}
+
+:root{--dt-bg:#15130f;--dt-panel:#211e17;--dt-line:#463b2d}
+
+</style>
 </head>
-<body>
+<body><div class="dt-nav"><a class="dt-brand" href="/index.html"><b>dt</b> Daiki Takizawa.</a><span class="dt-project-label">HOSPITALITY ANALYTICS</span><a class="dt-back" href="/index.html#projects">← All projects</a></div>
 <div class="wrap">
 
   <header>
-    <div class="eyebrow">Data Analysis — SQL &amp; Interactive Visualization</div>
-    <h1>The Booking Ledger</h1>
-    <p class="subhead">Which hotel bookings are actually reliable, and where should revenue-protection efforts focus? An analysis of 119,389 real bookings across a city hotel and a resort property.</p>
+    <div class="dt-editorial"><div><div class="dt-overline">Data Analysis — SQL &amp; Interactive Visualization</div>
+    <h1>The Booking<br><em>Ledger.</em></h1>
+    <p class="subhead">Which hotel bookings are actually reliable, and where should revenue-protection efforts focus? An analysis of 119,389 real bookings across a city hotel and a resort property.</p></div><div class="dt-art"><span class="dt-art-label">FIG. 01 / AN INDEPENDENT PERSPECTIVE</span><svg viewBox="0 0 500 300" aria-hidden="true" fill="none" style="color:#e0b48b"><g transform="translate(80 35) rotate(-8 160 100)"><rect x="0" y="0" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="0" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="0" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="25" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="25" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="50" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="50" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="50" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="75" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="75" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="100" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="100" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="100" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="125" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="125" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="150" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="150" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="150" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="175" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="175" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="175" width="21" height="15" fill="currentColor" opacity=".65"/></g></svg><span class="dt-art-foot">DAIKI TAKIZAWA · RESEARCH & ANALYTICS</span></div></div>
     <div class="keytag-row">
       <span class="keytag-label">Filter:</span>
       <button class="keytag active" data-hotel="All">⌂ Both Hotels</button>
@@ -313,7 +333,7 @@
 <script>
 const DATA = {"All": {"kpis": {"total": 119389.0, "cancel_rate": 37.0, "avg_adr": 160.98, "avg_lead": 104.0}, "segment": [{"market_segment": "Groups", "total": 19811, "cancel_rate": 61.1}, {"market_segment": "Online TA", "total": 56477, "cancel_rate": 36.7}, {"market_segment": "Offline TA/TO", "total": 24218, "cancel_rate": 34.3}, {"market_segment": "Aviation", "total": 237, "cancel_rate": 21.9}, {"market_segment": "Corporate", "total": 5295, "cancel_rate": 18.7}, {"market_segment": "Direct", "total": 12606, "cancel_rate": 15.3}, {"market_segment": "Complementary", "total": 743, "cancel_rate": 13.1}], "seasonal": [{"month": "January", "adr": 107.87, "bookings": 4122}, {"month": "February", "adr": 116.6, "bookings": 5372}, {"month": "March", "adr": 124.5, "bookings": 6645}, {"month": "April", "adr": 157.59, "bookings": 6565}, {"month": "May", "adr": 168.79, "bookings": 7114}, {"month": "June", "adr": 184.49, "bookings": 6404}, {"month": "July", "adr": 208.09, "bookings": 7919}, {"month": "August", "adr": 228.76, "bookings": 8638}, {"month": "September", "adr": 172.72, "bookings": 6392}, {"month": "October", "adr": 139.8, "bookings": 6914}, {"month": "November", "adr": 113.52, "bookings": 4672}, {"month": "December", "adr": 127.06, "bookings": 4409}], "channel": [{"channel": "TA/TO", "revenue": 9442919.0, "cancel_rate": 41.0, "total": 97869}, {"channel": "Direct", "revenue": 2063690.0, "cancel_rate": 17.5, "total": 14645}, {"channel": "Corporate", "revenue": 563325.0, "cancel_rate": 22.1, "total": 6677}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 9.6, "total": 19746}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 27.9, "total": 18960}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 38.5, "total": 33323}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 51.1, "total": 47360}], "deposit": [{"deposit_type": "Non Refund", "total": 14586, "cancel_rate": 99.4}, {"deposit_type": "No Deposit", "total": 104641, "cancel_rate": 28.4}, {"deposit_type": "Refundable", "total": 162, "cancel_rate": 22.2}]}, "City Hotel": {"kpis": {"total": 79329.0, "cancel_rate": 41.7, "avg_adr": 170.26, "avg_lead": 109.7}, "segment": [{"market_segment": "Groups", "total": 13975, "cancel_rate": 68.9}, {"market_segment": "Offline TA/TO", "total": 16746, "cancel_rate": 42.8}, {"market_segment": "Online TA", "total": 38748, "cancel_rate": 37.4}, {"market_segment": "Aviation", "total": 237, "cancel_rate": 21.9}, {"market_segment": "Corporate", "total": 2986, "cancel_rate": 21.5}, {"market_segment": "Direct", "total": 6093, "cancel_rate": 17.3}, {"market_segment": "Complementary", "total": 542, "cancel_rate": 11.8}], "seasonal": [{"month": "January", "adr": 132.28, "bookings": 2254}, {"month": "February", "adr": 138.75, "bookings": 3064}, {"month": "March", "adr": 145.17, "bookings": 4072}, {"month": "April", "adr": 180.09, "bookings": 4015}, {"month": "May", "adr": 193.92, "bookings": 4579}, {"month": "June", "adr": 189.5, "bookings": 4366}, {"month": "July", "adr": 186.05, "bookings": 4782}, {"month": "August", "adr": 190.64, "bookings": 5381}, {"month": "September", "adr": 181.29, "bookings": 4290}, {"month": "October", "adr": 163.82, "bookings": 4337}, {"month": "November", "adr": 139.27, "bookings": 2696}, {"month": "December", "adr": 141.45, "bookings": 2392}], "channel": [{"channel": "TA/TO", "revenue": 6504661.0, "cancel_rate": 45.0, "total": 68944}, {"channel": "Direct", "revenue": 986159.0, "cancel_rate": 18.2, "total": 6780}, {"channel": "Corporate", "revenue": 349420.0, "cancel_rate": 23.1, "total": 3408}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 12.2, "total": 10808}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 30.9, "total": 12554}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 40.7, "total": 23529}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 56.5, "total": 32438}], "deposit": [{"deposit_type": "Non Refund", "total": 12867, "cancel_rate": 99.8}, {"deposit_type": "Refundable", "total": 20, "cancel_rate": 70.0}, {"deposit_type": "No Deposit", "total": 66442, "cancel_rate": 30.5}]}, "Resort Hotel": {"kpis": {"total": 40060.0, "cancel_rate": 27.8, "avg_adr": 146.17, "avg_lead": 92.7}, "segment": [{"market_segment": "Groups", "total": 5836, "cancel_rate": 42.4}, {"market_segment": "Online TA", "total": 17729, "cancel_rate": 35.2}, {"market_segment": "Complementary", "total": 201, "cancel_rate": 16.4}, {"market_segment": "Offline TA/TO", "total": 7472, "cancel_rate": 15.2}, {"market_segment": "Corporate", "total": 2309, "cancel_rate": 15.2}, {"market_segment": "Direct", "total": 6513, "cancel_rate": 13.5}], "seasonal": [{"month": "January", "adr": 78.42, "bookings": 1868}, {"month": "February", "adr": 87.18, "bookings": 2308}, {"month": "March", "adr": 91.79, "bookings": 2573}, {"month": "April", "adr": 122.15, "bookings": 2550}, {"month": "May", "adr": 123.42, "bookings": 2535}, {"month": "June", "adr": 173.75, "bookings": 2038}, {"month": "July", "adr": 241.69, "bookings": 3137}, {"month": "August", "adr": 291.75, "bookings": 3257}, {"month": "September", "adr": 155.24, "bookings": 2102}, {"month": "October", "adr": 99.39, "bookings": 2577}, {"month": "November", "adr": 78.37, "bookings": 1976}, {"month": "December", "adr": 110.0, "bookings": 2017}], "channel": [{"channel": "TA/TO", "revenue": 2938256.0, "cancel_rate": 31.5, "total": 28925}, {"channel": "Direct", "revenue": 1077531.0, "cancel_rate": 16.8, "total": 7865}, {"channel": "Corporate", "revenue": 213905.0, "cancel_rate": 21.0, "total": 3269}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 6.5, "total": 8938}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 21.9, "total": 6406}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 33.1, "total": 9794}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 39.5, "total": 14922}], "deposit": [{"deposit_type": "Non Refund", "total": 1719, "cancel_rate": 96.0}, {"deposit_type": "No Deposit", "total": 38199, "cancel_rate": 24.7}, {"deposit_type": "Refundable", "total": 142, "cancel_rate": 15.5}]}};
 
-const COLORS = { all: '#A8793A', city: '#3B5570', resort: '#2F7566', alert: '#A63D31', ink: '#1C2B3A' };
+const COLORS = { all: '#dbb187', city: '#b5bed3', resort: '#97c4b1', alert: '#f29c7b', ink: '#f0e9dc' };
 let currentHotel = 'All';
 let charts = {};
 
@@ -347,7 +367,7 @@ function render(hotel){
       indexAxis: 'y',
       plugins: { legend: {display:false}, tooltip:{callbacks:{label:(ctx)=>ctx.parsed.x+'% cancellation rate'}} },
       scales: {
-        x: { max: 70, ticks:{callback:v=>v+'%'}, grid:{color:'#D9D4C7'} },
+        x: { max: 70, ticks:{callback:v=>v+'%'}, grid:{color:'#463b2d'} },
         y: { grid:{display:false} }
       }
     }
@@ -366,14 +386,14 @@ function render(hotel){
     data: {
       labels: monthLabels,
       datasets: [
-        { type:'bar', label:'Bookings', data: bookingData, backgroundColor:'#D9D4C7', yAxisID:'y1', borderRadius:2, order:2 },
+        { type:'bar', label:'Bookings', data: bookingData, backgroundColor:'#463b2d', yAxisID:'y1', borderRadius:2, order:2 },
         { type:'line', label:'Avg Daily Rate (CA$)', data: adrData, borderColor: c, backgroundColor: c+'22', fill:true, tension:0.35, yAxisID:'y', pointRadius:3, pointBackgroundColor:c, borderWidth:2.5, order:1 }
       ]
     },
     options: {
       plugins:{ legend:{position:'top', align:'end', labels:{boxWidth:10,font:{family:"'IBM Plex Sans'",size:11}}} },
       scales: {
-        y: { position:'left', title:{display:true,text:'CA$ ADR'}, grid:{color:'#D9D4C7'} },
+        y: { position:'left', title:{display:true,text:'CA$ ADR'}, grid:{color:'#463b2d'} },
         y1: { position:'right', title:{display:true,text:'Bookings'}, grid:{display:false} }
       }
     }
@@ -400,7 +420,7 @@ function render(hotel){
     options: {
       plugins:{ legend:{position:'top', align:'end', labels:{boxWidth:10,font:{family:"'IBM Plex Sans'",size:11}}} },
       scales: {
-        y: { position:'left', title:{display:true,text:'CA$ thousands'}, grid:{color:'#D9D4C7'} },
+        y: { position:'left', title:{display:true,text:'CA$ thousands'}, grid:{color:'#463b2d'} },
         y1: { position:'right', title:{display:true,text:'Cancel %'}, grid:{display:false}, min:0, max:60 }
       }
     }
@@ -413,7 +433,7 @@ function render(hotel){
   const ltLabels = d.leadtime.map(l => l.bucket);
   const ltRates = d.leadtime.map(l => l.cancel_rate);
   const ltColors = ltLabels.map((l,i) => {
-    const shade = ['#D9D4C7', c+'99', c+'CC', COLORS.alert];
+    const shade = ['#463b2d', c+'99', c+'CC', COLORS.alert];
     return shade[i] || c;
   });
 
@@ -423,7 +443,7 @@ function render(hotel){
     data: { labels: ltLabels, datasets:[{ data: ltRates, backgroundColor: ltColors, borderRadius:3 }] },
     options: {
       plugins:{ legend:{display:false}, tooltip:{callbacks:{label:(ctx)=>ctx.parsed.y+'% cancellation rate'}} },
-      scales: { y:{ max:60, ticks:{callback:v=>v+'%'}, grid:{color:'#D9D4C7'} }, x:{grid:{display:false}} }
+      scales: { y:{ max:60, ticks:{callback:v=>v+'%'}, grid:{color:'#463b2d'} }, x:{grid:{display:false}} }
     }
   });
   const first = d.leadtime[0], last = d.leadtime[d.leadtime.length-1];
@@ -446,9 +466,9 @@ document.querySelectorAll('.keytag').forEach(btn => {
 
 Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
 Chart.defaults.font.size = 12;
-Chart.defaults.color = '#3B4C5E';
+Chart.defaults.color = '#bdb29e';
 
 render('All');
 </script>
-</body>
+<div class="dt-footer"><span>Daiki Takizawa · Hospitality analytics</span><a href="/index.html#projects">Back to the portfolio ↗</a></div></body>
 </html>
