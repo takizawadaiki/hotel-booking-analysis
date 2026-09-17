@@ -1,0 +1,507 @@
+{
+  "All": {
+    "kpis": {
+      "total": 119389.0,
+      "cancel_rate": 37.0,
+      "avg_adr": 160.98,
+      "avg_lead": 104.0
+    },
+    "segment": [
+      {
+        "market_segment": "Groups",
+        "total": 19811,
+        "cancel_rate": 61.1
+      },
+      {
+        "market_segment": "Online TA",
+        "total": 56477,
+        "cancel_rate": 36.7
+      },
+      {
+        "market_segment": "Offline TA/TO",
+        "total": 24218,
+        "cancel_rate": 34.3
+      },
+      {
+        "market_segment": "Aviation",
+        "total": 237,
+        "cancel_rate": 21.9
+      },
+      {
+        "market_segment": "Corporate",
+        "total": 5295,
+        "cancel_rate": 18.7
+      },
+      {
+        "market_segment": "Direct",
+        "total": 12606,
+        "cancel_rate": 15.3
+      },
+      {
+        "market_segment": "Complementary",
+        "total": 743,
+        "cancel_rate": 13.1
+      }
+    ],
+    "seasonal": [
+      {
+        "month": "January",
+        "adr": 107.87,
+        "bookings": 4122
+      },
+      {
+        "month": "February",
+        "adr": 116.6,
+        "bookings": 5372
+      },
+      {
+        "month": "March",
+        "adr": 124.5,
+        "bookings": 6645
+      },
+      {
+        "month": "April",
+        "adr": 157.59,
+        "bookings": 6565
+      },
+      {
+        "month": "May",
+        "adr": 168.79,
+        "bookings": 7114
+      },
+      {
+        "month": "June",
+        "adr": 184.49,
+        "bookings": 6404
+      },
+      {
+        "month": "July",
+        "adr": 208.09,
+        "bookings": 7919
+      },
+      {
+        "month": "August",
+        "adr": 228.76,
+        "bookings": 8638
+      },
+      {
+        "month": "September",
+        "adr": 172.72,
+        "bookings": 6392
+      },
+      {
+        "month": "October",
+        "adr": 139.8,
+        "bookings": 6914
+      },
+      {
+        "month": "November",
+        "adr": 113.52,
+        "bookings": 4672
+      },
+      {
+        "month": "December",
+        "adr": 127.06,
+        "bookings": 4409
+      }
+    ],
+    "channel": [
+      {
+        "channel": "TA/TO",
+        "revenue": 9442919.0,
+        "cancel_rate": 41.0,
+        "total": 97869
+      },
+      {
+        "channel": "Direct",
+        "revenue": 2063690.0,
+        "cancel_rate": 17.5,
+        "total": 14645
+      },
+      {
+        "channel": "Corporate",
+        "revenue": 563325.0,
+        "cancel_rate": 22.1,
+        "total": 6677
+      }
+    ],
+    "leadtime": [
+      {
+        "bucket": "0-7 days",
+        "sortkey": 0,
+        "cancel_rate": 9.6,
+        "total": 19746
+      },
+      {
+        "bucket": "8-30 days",
+        "sortkey": 8,
+        "cancel_rate": 27.9,
+        "total": 18960
+      },
+      {
+        "bucket": "31-100 days",
+        "sortkey": 31,
+        "cancel_rate": 38.5,
+        "total": 33323
+      },
+      {
+        "bucket": "100+ days",
+        "sortkey": 101,
+        "cancel_rate": 51.1,
+        "total": 47360
+      }
+    ],
+    "deposit": [
+      {
+        "deposit_type": "Non Refund",
+        "total": 14586,
+        "cancel_rate": 99.4
+      },
+      {
+        "deposit_type": "No Deposit",
+        "total": 104641,
+        "cancel_rate": 28.4
+      },
+      {
+        "deposit_type": "Refundable",
+        "total": 162,
+        "cancel_rate": 22.2
+      }
+    ]
+  },
+  "City Hotel": {
+    "kpis": {
+      "total": 79329.0,
+      "cancel_rate": 41.7,
+      "avg_adr": 170.26,
+      "avg_lead": 109.7
+    },
+    "segment": [
+      {
+        "market_segment": "Groups",
+        "total": 13975,
+        "cancel_rate": 68.9
+      },
+      {
+        "market_segment": "Offline TA/TO",
+        "total": 16746,
+        "cancel_rate": 42.8
+      },
+      {
+        "market_segment": "Online TA",
+        "total": 38748,
+        "cancel_rate": 37.4
+      },
+      {
+        "market_segment": "Aviation",
+        "total": 237,
+        "cancel_rate": 21.9
+      },
+      {
+        "market_segment": "Corporate",
+        "total": 2986,
+        "cancel_rate": 21.5
+      },
+      {
+        "market_segment": "Direct",
+        "total": 6093,
+        "cancel_rate": 17.3
+      },
+      {
+        "market_segment": "Complementary",
+        "total": 542,
+        "cancel_rate": 11.8
+      }
+    ],
+    "seasonal": [
+      {
+        "month": "January",
+        "adr": 132.28,
+        "bookings": 2254
+      },
+      {
+        "month": "February",
+        "adr": 138.75,
+        "bookings": 3064
+      },
+      {
+        "month": "March",
+        "adr": 145.17,
+        "bookings": 4072
+      },
+      {
+        "month": "April",
+        "adr": 180.09,
+        "bookings": 4015
+      },
+      {
+        "month": "May",
+        "adr": 193.92,
+        "bookings": 4579
+      },
+      {
+        "month": "June",
+        "adr": 189.5,
+        "bookings": 4366
+      },
+      {
+        "month": "July",
+        "adr": 186.05,
+        "bookings": 4782
+      },
+      {
+        "month": "August",
+        "adr": 190.64,
+        "bookings": 5381
+      },
+      {
+        "month": "September",
+        "adr": 181.29,
+        "bookings": 4290
+      },
+      {
+        "month": "October",
+        "adr": 163.82,
+        "bookings": 4337
+      },
+      {
+        "month": "November",
+        "adr": 139.27,
+        "bookings": 2696
+      },
+      {
+        "month": "December",
+        "adr": 141.45,
+        "bookings": 2392
+      }
+    ],
+    "channel": [
+      {
+        "channel": "TA/TO",
+        "revenue": 6504661.0,
+        "cancel_rate": 45.0,
+        "total": 68944
+      },
+      {
+        "channel": "Direct",
+        "revenue": 986159.0,
+        "cancel_rate": 18.2,
+        "total": 6780
+      },
+      {
+        "channel": "Corporate",
+        "revenue": 349420.0,
+        "cancel_rate": 23.1,
+        "total": 3408
+      }
+    ],
+    "leadtime": [
+      {
+        "bucket": "0-7 days",
+        "sortkey": 0,
+        "cancel_rate": 12.2,
+        "total": 10808
+      },
+      {
+        "bucket": "8-30 days",
+        "sortkey": 8,
+        "cancel_rate": 30.9,
+        "total": 12554
+      },
+      {
+        "bucket": "31-100 days",
+        "sortkey": 31,
+        "cancel_rate": 40.7,
+        "total": 23529
+      },
+      {
+        "bucket": "100+ days",
+        "sortkey": 101,
+        "cancel_rate": 56.5,
+        "total": 32438
+      }
+    ],
+    "deposit": [
+      {
+        "deposit_type": "Non Refund",
+        "total": 12867,
+        "cancel_rate": 99.8
+      },
+      {
+        "deposit_type": "Refundable",
+        "total": 20,
+        "cancel_rate": 70.0
+      },
+      {
+        "deposit_type": "No Deposit",
+        "total": 66442,
+        "cancel_rate": 30.5
+      }
+    ]
+  },
+  "Resort Hotel": {
+    "kpis": {
+      "total": 40060.0,
+      "cancel_rate": 27.8,
+      "avg_adr": 146.17,
+      "avg_lead": 92.7
+    },
+    "segment": [
+      {
+        "market_segment": "Groups",
+        "total": 5836,
+        "cancel_rate": 42.4
+      },
+      {
+        "market_segment": "Online TA",
+        "total": 17729,
+        "cancel_rate": 35.2
+      },
+      {
+        "market_segment": "Complementary",
+        "total": 201,
+        "cancel_rate": 16.4
+      },
+      {
+        "market_segment": "Offline TA/TO",
+        "total": 7472,
+        "cancel_rate": 15.2
+      },
+      {
+        "market_segment": "Corporate",
+        "total": 2309,
+        "cancel_rate": 15.2
+      },
+      {
+        "market_segment": "Direct",
+        "total": 6513,
+        "cancel_rate": 13.5
+      }
+    ],
+    "seasonal": [
+      {
+        "month": "January",
+        "adr": 78.42,
+        "bookings": 1868
+      },
+      {
+        "month": "February",
+        "adr": 87.18,
+        "bookings": 2308
+      },
+      {
+        "month": "March",
+        "adr": 91.79,
+        "bookings": 2573
+      },
+      {
+        "month": "April",
+        "adr": 122.15,
+        "bookings": 2550
+      },
+      {
+        "month": "May",
+        "adr": 123.42,
+        "bookings": 2535
+      },
+      {
+        "month": "June",
+        "adr": 173.75,
+        "bookings": 2038
+      },
+      {
+        "month": "July",
+        "adr": 241.69,
+        "bookings": 3137
+      },
+      {
+        "month": "August",
+        "adr": 291.75,
+        "bookings": 3257
+      },
+      {
+        "month": "September",
+        "adr": 155.24,
+        "bookings": 2102
+      },
+      {
+        "month": "October",
+        "adr": 99.39,
+        "bookings": 2577
+      },
+      {
+        "month": "November",
+        "adr": 78.37,
+        "bookings": 1976
+      },
+      {
+        "month": "December",
+        "adr": 110.0,
+        "bookings": 2017
+      }
+    ],
+    "channel": [
+      {
+        "channel": "TA/TO",
+        "revenue": 2938256.0,
+        "cancel_rate": 31.5,
+        "total": 28925
+      },
+      {
+        "channel": "Direct",
+        "revenue": 1077531.0,
+        "cancel_rate": 16.8,
+        "total": 7865
+      },
+      {
+        "channel": "Corporate",
+        "revenue": 213905.0,
+        "cancel_rate": 21.0,
+        "total": 3269
+      }
+    ],
+    "leadtime": [
+      {
+        "bucket": "0-7 days",
+        "sortkey": 0,
+        "cancel_rate": 6.5,
+        "total": 8938
+      },
+      {
+        "bucket": "8-30 days",
+        "sortkey": 8,
+        "cancel_rate": 21.9,
+        "total": 6406
+      },
+      {
+        "bucket": "31-100 days",
+        "sortkey": 31,
+        "cancel_rate": 33.1,
+        "total": 9794
+      },
+      {
+        "bucket": "100+ days",
+        "sortkey": 101,
+        "cancel_rate": 39.5,
+        "total": 14922
+      }
+    ],
+    "deposit": [
+      {
+        "deposit_type": "Non Refund",
+        "total": 1719,
+        "cancel_rate": 96.0
+      },
+      {
+        "deposit_type": "No Deposit",
+        "total": 38199,
+        "cancel_rate": 24.7
+      },
+      {
+        "deposit_type": "Refundable",
+        "total": 142,
+        "cancel_rate": 15.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,563 @@
+{
+  "All": {
+    "segment": [
+      {
+        "market_segment": "Online TA",
+        "total": 56477,
+        "cancel_rate": 36.7,
+        "estimated_cancellations": 20727.059,
+        "booking_share": 0.4730502810141638,
+        "cancellation_share": 0.4688693214679217,
+        "rounding_bound": 28.238500000000002
+      },
+      {
+        "market_segment": "Groups",
+        "total": 19811,
+        "cancel_rate": 61.1,
+        "estimated_cancellations": 12104.521,
+        "booking_share": 0.16593656031962745,
+        "cancellation_share": 0.2738178411111875,
+        "rounding_bound": 9.9055
+      },
+      {
+        "market_segment": "Offline TA/TO",
+        "total": 24218,
+        "cancel_rate": 34.3,
+        "estimated_cancellations": 8306.774,
+        "booking_share": 0.2028495087487122,
+        "cancellation_share": 0.18790854452468986,
+        "rounding_bound": 12.109
+      },
+      {
+        "market_segment": "Direct",
+        "total": 12606,
+        "cancel_rate": 15.3,
+        "estimated_cancellations": 1928.718,
+        "booking_share": 0.10558761694963523,
+        "cancellation_share": 0.0436297643560028,
+        "rounding_bound": 6.303
+      },
+      {
+        "market_segment": "Corporate",
+        "total": 5295,
+        "cancel_rate": 18.7,
+        "estimated_cancellations": 990.165,
+        "booking_share": 0.04435081958974445,
+        "cancellation_share": 0.022398642841287068,
+        "rounding_bound": 2.6475
+      },
+      {
+        "market_segment": "Complementary",
+        "total": 743,
+        "cancel_rate": 13.1,
+        "estimated_cancellations": 97.333,
+        "booking_share": 0.006223353910326747,
+        "cancellation_share": 0.0022017816259623335,
+        "rounding_bound": 0.3715
+      },
+      {
+        "market_segment": "Aviation",
+        "total": 237,
+        "cancel_rate": 21.9,
+        "estimated_cancellations": 51.90299999999999,
+        "booking_share": 0.001985107505716607,
+        "cancellation_share": 0.0011741040729487736,
+        "rounding_bound": 0.11850000000000001
+      }
+    ],
+    "lead": {
+      "estimated_cancellations": 44215.771,
+      "long_booking_share": 0.39668646190185025,
+      "long_cancellation_share": 0.5473377361213491
+    },
+    "coverage": {
+      "segment": 119387,
+      "channel": 119191,
+      "seasonal": 75166,
+      "leadtime": 119389,
+      "deposit": 119389
+    },
+    "channels": [
+      {
+        "channel": "TA/TO",
+        "revenue": 9442919.0,
+        "cancel_rate": 41.0,
+        "total": 97869,
+        "revenue_per_record": 96.48529156321204
+      },
+      {
+        "channel": "Direct",
+        "revenue": 2063690.0,
+        "cancel_rate": 17.5,
+        "total": 14645,
+        "revenue_per_record": 140.9143052236258
+      },
+      {
+        "channel": "Corporate",
+        "revenue": 563325.0,
+        "cancel_rate": 22.1,
+        "total": 6677,
+        "revenue_per_record": 84.36797963157106
+      }
+    ],
+    "seasonality": [
+      {
+        "month": "January",
+        "adr": 107.87,
+        "bookings": 4122,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2061.0
+      },
+      {
+        "month": "February",
+        "adr": 116.6,
+        "bookings": 5372,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2686.0
+      },
+      {
+        "month": "March",
+        "adr": 124.5,
+        "bookings": 6645,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 3322.5
+      },
+      {
+        "month": "April",
+        "adr": 157.59,
+        "bookings": 6565,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 3282.5
+      },
+      {
+        "month": "May",
+        "adr": 168.79,
+        "bookings": 7114,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 3557.0
+      },
+      {
+        "month": "June",
+        "adr": 184.49,
+        "bookings": 6404,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 3202.0
+      },
+      {
+        "month": "July",
+        "adr": 208.09,
+        "bookings": 7919,
+        "covered_month_occurrences": 3,
+        "bookings_per_occurrence": 2639.6666666666665
+      },
+      {
+        "month": "August",
+        "adr": 228.76,
+        "bookings": 8638,
+        "covered_month_occurrences": 3,
+        "bookings_per_occurrence": 2879.3333333333335
+      },
+      {
+        "month": "September",
+        "adr": 172.72,
+        "bookings": 6392,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 3196.0
+      },
+      {
+        "month": "October",
+        "adr": 139.8,
+        "bookings": 6914,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 3457.0
+      },
+      {
+        "month": "November",
+        "adr": 113.52,
+        "bookings": 4672,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2336.0
+      },
+      {
+        "month": "December",
+        "adr": 127.06,
+        "bookings": 4409,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2204.5
+      }
+    ]
+  },
+  "City Hotel": {
+    "segment": [
+      {
+        "market_segment": "Online TA",
+        "total": 38748,
+        "cancel_rate": 37.4,
+        "estimated_cancellations": 14491.752,
+        "booking_share": 0.4884468479370722,
+        "cancellation_share": 0.4378205480868694,
+        "rounding_bound": 19.374
+      },
+      {
+        "market_segment": "Groups",
+        "total": 13975,
+        "cancel_rate": 68.9,
+        "estimated_cancellations": 9628.775000000001,
+        "booking_share": 0.17616508464748074,
+        "cancellation_share": 0.2909017176049622,
+        "rounding_bound": 6.9875
+      },
+      {
+        "market_segment": "Offline TA/TO",
+        "total": 16746,
+        "cancel_rate": 42.8,
+        "estimated_cancellations": 7167.288,
+        "booking_share": 0.21109556404341415,
+        "cancellation_share": 0.21653599650728508,
+        "rounding_bound": 8.373
+      },
+      {
+        "market_segment": "Direct",
+        "total": 6093,
+        "cancel_rate": 17.3,
+        "estimated_cancellations": 1054.0890000000002,
+        "booking_share": 0.0768067163332451,
+        "cancellation_share": 0.03184582676493085,
+        "rounding_bound": 3.0465
+      },
+      {
+        "market_segment": "Corporate",
+        "total": 2986,
+        "cancel_rate": 21.5,
+        "estimated_cancellations": 641.99,
+        "booking_share": 0.03764071146743309,
+        "cancellation_share": 0.019395613012580484,
+        "rounding_bound": 1.493
+      },
+      {
+        "market_segment": "Complementary",
+        "total": 542,
+        "cancel_rate": 11.8,
+        "estimated_cancellations": 63.956,
+        "booking_share": 0.0068323059662922766,
+        "cancellation_share": 0.0019322198567463629,
+        "rounding_bound": 0.271
+      },
+      {
+        "market_segment": "Aviation",
+        "total": 237,
+        "cancel_rate": 21.9,
+        "estimated_cancellations": 51.90299999999999,
+        "booking_share": 0.0029875581439322316,
+        "cancellation_share": 0.0015680781666255934,
+        "rounding_bound": 0.11850000000000001
+      }
+    ],
+    "lead": {
+      "estimated_cancellations": 33101.535,
+      "long_booking_share": 0.4089046880711972,
+      "long_cancellation_share": 0.5536743235623363
+    },
+    "coverage": {
+      "segment": 79327,
+      "channel": 79132,
+      "seasonal": 46228,
+      "leadtime": 79329,
+      "deposit": 79329
+    },
+    "channels": [
+      {
+        "channel": "TA/TO",
+        "revenue": 6504661.0,
+        "cancel_rate": 45.0,
+        "total": 68944,
+        "revenue_per_record": 94.34702077048038
+      },
+      {
+        "channel": "Direct",
+        "revenue": 986159.0,
+        "cancel_rate": 18.2,
+        "total": 6780,
+        "revenue_per_record": 145.45117994100295
+      },
+      {
+        "channel": "Corporate",
+        "revenue": 349420.0,
+        "cancel_rate": 23.1,
+        "total": 3408,
+        "revenue_per_record": 102.52934272300469
+      }
+    ],
+    "seasonality": [
+      {
+        "month": "January",
+        "adr": 132.28,
+        "bookings": 2254,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1127.0
+      },
+      {
+        "month": "February",
+        "adr": 138.75,
+        "bookings": 3064,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1532.0
+      },
+      {
+        "month": "March",
+        "adr": 145.17,
+        "bookings": 4072,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2036.0
+      },
+      {
+        "month": "April",
+        "adr": 180.09,
+        "bookings": 4015,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2007.5
+      },
+      {
+        "month": "May",
+        "adr": 193.92,
+        "bookings": 4579,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2289.5
+      },
+      {
+        "month": "June",
+        "adr": 189.5,
+        "bookings": 4366,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2183.0
+      },
+      {
+        "month": "July",
+        "adr": 186.05,
+        "bookings": 4782,
+        "covered_month_occurrences": 3,
+        "bookings_per_occurrence": 1594.0
+      },
+      {
+        "month": "August",
+        "adr": 190.64,
+        "bookings": 5381,
+        "covered_month_occurrences": 3,
+        "bookings_per_occurrence": 1793.6666666666667
+      },
+      {
+        "month": "September",
+        "adr": 181.29,
+        "bookings": 4290,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2145.0
+      },
+      {
+        "month": "October",
+        "adr": 163.82,
+        "bookings": 4337,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 2168.5
+      },
+      {
+        "month": "November",
+        "adr": 139.27,
+        "bookings": 2696,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1348.0
+      },
+      {
+        "month": "December",
+        "adr": 141.45,
+        "bookings": 2392,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1196.0
+      }
+    ]
+  },
+  "Resort Hotel": {
+    "segment": [
+      {
+        "market_segment": "Online TA",
+        "total": 17729,
+        "cancel_rate": 35.2,
+        "estimated_cancellations": 6240.608,
+        "booking_share": 0.4425611582626061,
+        "cancellation_share": 0.5615085761628821,
+        "rounding_bound": 8.8645
+      },
+      {
+        "market_segment": "Groups",
+        "total": 5836,
+        "cancel_rate": 42.4,
+        "estimated_cancellations": 2474.464,
+        "booking_share": 0.14568147778332502,
+        "cancellation_share": 0.22264381249492193,
+        "rounding_bound": 2.918
+      },
+      {
+        "market_segment": "Offline TA/TO",
+        "total": 7472,
+        "cancel_rate": 15.2,
+        "estimated_cancellations": 1135.744,
+        "booking_share": 0.18652021967049426,
+        "cancellation_share": 0.1021903629142443,
+        "rounding_bound": 3.736
+      },
+      {
+        "market_segment": "Direct",
+        "total": 6513,
+        "cancel_rate": 13.5,
+        "estimated_cancellations": 879.255,
+        "booking_share": 0.16258112830753868,
+        "cancellation_share": 0.07911235942621213,
+        "rounding_bound": 3.2565
+      },
+      {
+        "market_segment": "Corporate",
+        "total": 2309,
+        "cancel_rate": 15.2,
+        "estimated_cancellations": 350.96799999999996,
+        "booking_share": 0.05763854218671992,
+        "cancellation_share": 0.03157890095944728,
+        "rounding_bound": 1.1545
+      },
+      {
+        "market_segment": "Complementary",
+        "total": 201,
+        "cancel_rate": 16.4,
+        "estimated_cancellations": 32.964,
+        "booking_share": 0.005017473789316026,
+        "cancellation_share": 0.0029659880422922323,
+        "rounding_bound": 0.1005
+      }
+    ],
+    "lead": {
+      "estimated_cancellations": 11119.887999999999,
+      "long_booking_share": 0.372491263105342,
+      "long_cancellation_share": 0.5300583962716171
+    },
+    "coverage": {
+      "segment": 40060,
+      "channel": 40059,
+      "seasonal": 28938,
+      "leadtime": 40060,
+      "deposit": 40060
+    },
+    "channels": [
+      {
+        "channel": "TA/TO",
+        "revenue": 2938256.0,
+        "cancel_rate": 31.5,
+        "total": 28925,
+        "revenue_per_record": 101.5818841832325
+      },
+      {
+        "channel": "Direct",
+        "revenue": 1077531.0,
+        "cancel_rate": 16.8,
+        "total": 7865,
+        "revenue_per_record": 137.00330578512396
+      },
+      {
+        "channel": "Corporate",
+        "revenue": 213905.0,
+        "cancel_rate": 21.0,
+        "total": 3269,
+        "revenue_per_record": 65.43438360354848
+      }
+    ],
+    "seasonality": [
+      {
+        "month": "January",
+        "adr": 78.42,
+        "bookings": 1868,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 934.0
+      },
+      {
+        "month": "February",
+        "adr": 87.18,
+        "bookings": 2308,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1154.0
+      },
+      {
+        "month": "March",
+        "adr": 91.79,
+        "bookings": 2573,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1286.5
+      },
+      {
+        "month": "April",
+        "adr": 122.15,
+        "bookings": 2550,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1275.0
+      },
+      {
+        "month": "May",
+        "adr": 123.42,
+        "bookings": 2535,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1267.5
+      },
+      {
+        "month": "June",
+        "adr": 173.75,
+        "bookings": 2038,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1019.0
+      },
+      {
+        "month": "July",
+        "adr": 241.69,
+        "bookings": 3137,
+        "covered_month_occurrences": 3,
+        "bookings_per_occurrence": 1045.6666666666667
+      },
+      {
+        "month": "August",
+        "adr": 291.75,
+        "bookings": 3257,
+        "covered_month_occurrences": 3,
+        "bookings_per_occurrence": 1085.6666666666667
+      },
+      {
+        "month": "September",
+        "adr": 155.24,
+        "bookings": 2102,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1051.0
+      },
+      {
+        "month": "October",
+        "adr": 99.39,
+        "bookings": 2577,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1288.5
+      },
+      {
+        "month": "November",
+        "adr": 78.37,
+        "bookings": 1976,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 988.0
+      },
+      {
+        "month": "December",
+        "adr": 110.0,
+        "bookings": 2017,
+        "covered_month_occurrences": 2,
+        "bookings_per_occurrence": 1008.5
+      }
+    ]
+  },
+  "lead_adjustment": {
+    "city_observed": 41.72690315017207,
+    "resort_observed": 27.758082875686473,
+    "city_standardized": 40.697646349328664,
+    "resort_standardized": 29.46070659776026
+  }
+}

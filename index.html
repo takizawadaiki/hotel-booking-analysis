@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Booking Ledger — Hotel Demand & Cancellation Analysis</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Booking Ledger — Hotel Demand &amp; Cancellation Analysis</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<script src="chart.umd.min.js"></script>
 <style>
   :root{
     --ink:#f0e9dc;
@@ -211,8 +212,11 @@
     .wrap{padding:0 16px 60px;}
     header{padding:36px 0 28px;}
   }
+
+.research-intro{padding:26px 0;border-top:1px solid var(--line)}.wrap>section>p,.research-intro p{font-size:14px;line-height:1.9;color:var(--ink-soft);max-width:920px}.small{font-size:12px!important;color:var(--ink-soft);line-height:1.8}.research-links{display:flex;flex-wrap:wrap;gap:13px 24px;margin:24px 0;font-size:12px}.research-links a,.wrap details summary{color:var(--dt-accent)}.table-scroll{overflow-x:auto;margin:28px 0;border:1px solid var(--line)}table{border-collapse:collapse;width:100%;text-align:left;font-size:12px;line-height:1.8}caption{background:var(--dt-panel);padding:18px;text-align:left;color:var(--dt-accent)}th,td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}thead th{font-size:11px;color:var(--ink-soft)}tbody th{font-weight:500}tbody tr:last-child>*{border:0}.bridge{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:28px 0}.bridge>div{background:var(--dt-panel);padding:24px}.bridge span{display:block;font-size:12px}.bridge strong{display:block;font-size:34px;font-weight:400;color:var(--dt-accent);margin-top:14px}.scenario{padding:26px;border:1px solid var(--line);background:var(--dt-panel)}.scenario p{font-size:13px;line-height:1.9}.controls{display:grid;grid-template-columns:1fr 1fr;gap:18px}.controls label{display:flex;flex-direction:column;gap:10px;font-size:12px;line-height:1.6}.controls input,.controls select{width:100%;padding:12px;background:#17140f;color:var(--ink);border:1px solid var(--line);font:inherit}#scenario-result{font-size:18px;color:var(--dt-accent)}details{border-top:1px solid var(--line);padding:18px 0;font-size:13px;line-height:1.9}summary{cursor:pointer}section[id]{scroll-margin-top:24px}.insight{display:block!important}.insight-icon{display:none}.wrap code{overflow-wrap:anywhere}.wrap a{ text-underline-offset:4px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--dt-accent);outline-offset:4px}
+@media(max-width:640px){.bridge,.controls{grid-template-columns:1fr}.table-scroll table{min-width:490px}.scenario{padding:18px}th,td{padding:10px}.wrap>section>p{font-size:13px}}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
 
 /* Portfolio-wide dark editorial design. Existing analysis logic is retained. */
@@ -233,103 +237,91 @@ body{background:var(--dt-bg);color:var(--dt-text);-webkit-font-smoothing:antiali
 
 </style>
 </head>
-<body><div class="dt-nav"><a class="dt-brand" href="/index.html"><b>dt</b> Daiki Takizawa.</a><span class="dt-project-label">HOSPITALITY ANALYTICS</span><a class="dt-back" href="/index.html#projects">← All projects</a></div>
+<body><div class="dt-nav"><a class="dt-brand" href="https://takizawadaiki.github.io/index.html"><b>dt</b> Daiki Takizawa.</a><span class="dt-project-label">HOSPITALITY ANALYTICS</span><a class="dt-back" href="https://takizawadaiki.github.io/index.html#projects">← All projects</a></div>
 <div class="wrap">
+<header>
+<div class="dt-editorial"><div><div class="dt-overline">Data Analysis — SQL &amp; Interactive Visualization</div>
+<h1>The Booking<br/><em>Ledger.</em></h1>
+<p class="subhead">A reservation is a promise, not an occupied room. Where should a hotel focus its efforts to turn bookings into stays—and when would intervention actually pay?</p></div><div class="dt-art"><span class="dt-art-label">FIG. 01 / AN INDEPENDENT PERSPECTIVE</span><svg aria-hidden="true" fill="none" style="color:#e0b48b" viewbox="0 0 500 300"><g transform="translate(80 35) rotate(-8 160 100)"><rect fill="#df8f69" height="15" opacity=".65" width="21" x="0" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="60" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="0"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="120" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="180" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="0"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="240" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="0"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="0" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="25"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="60" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="120" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="25"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="180" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="240" y="25"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="25"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="0" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="60" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="50"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="120" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="180" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="50"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="240" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="50"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="0" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="75"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="60" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="120" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="75"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="180" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="240" y="75"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="75"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="0" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="60" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="100"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="120" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="180" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="100"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="240" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="100"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="0" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="125"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="60" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="120" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="125"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="180" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="240" y="125"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="125"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="0" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="60" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="150"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="120" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="180" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="150"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="240" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="150"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="0" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="30" y="175"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="60" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="90" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="120" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="150" y="175"></rect><rect fill="#df8f69" height="15" opacity=".65" width="21" x="180" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="210" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="240" y="175"></rect><rect fill="currentColor" height="15" opacity=".65" width="21" x="270" y="175"></rect></g></svg><span class="dt-art-foot">DAIKI TAKIZAWA · RESEARCH &amp; ANALYTICS</span></div></div>
+<div class="research-intro"><div class="section-num">EXTENDED ANALYSIS · SEPTEMBER 2026</div><p><strong>The management question:</strong> prioritize preventable cancellations by volume and economic value, rather than targeting only the segment with the highest cancellation rate.</p><p><strong>What this revision adds:</strong> estimated cancellation counts, a comparison holding booking-window mix constant, a correction for uneven calendar coverage, and an intervention break-even calculator.</p><p class="small">Evidence basis: published dashboard summaries for 119,389 records. The original transaction file and SQL are unavailable, so calculations below are descriptive and approximate where they use rounded cancellation rates. These two historical properties do not represent the hotel industry as a whole.</p><nav aria-label="Research navigation" class="research-links"><a href="#priority">Cancellation volume</a><a href="#mix">Property comparison</a><a href="#calendar">Calendar correction</a><a href="#economics">Intervention economics</a><a href="#decision">Management conclusion</a></nav></div><div class="keytag-row">
+<span class="keytag-label">Filter:</span>
+<button aria-pressed="true" class="keytag active" data-hotel="All">⌂ Both Hotels</button>
+<button aria-pressed="false" class="keytag" data-hotel="City Hotel">⌂ City Hotel</button>
+<button aria-pressed="false" class="keytag" data-hotel="Resort Hotel">⌂ Resort Hotel</button>
+</div><p class="small">Hotel filters update the charts and detailed tables. The property comparison always shows both hotels. TA = travel agent; TO = tour operator; lead time = days between reservation and arrival; ADR = average daily rate. CAD amounts retain the original page’s illustrative 1.61 conversion factor, not a verified historical exchange rate.</p>
+<div class="kpi-grid">
+<div class="kpi">
+<div class="kpi-label">Total Bookings</div>
+<div class="kpi-value" id="kpi-total">—</div>
+</div>
+<div class="kpi">
+<div class="kpi-label">Cancellation Rate</div>
+<div class="kpi-value" id="kpi-cancel">—</div>
+</div>
+<div class="kpi">
+<div class="kpi-label">Avg. Daily Rate</div>
+<div class="kpi-value" id="kpi-adr">—</div>
+</div>
+<div class="kpi">
+<div class="kpi-label">Avg. Lead Time</div>
+<div class="kpi-value" id="kpi-lead">—</div>
+</div>
+</div>
+</header>
+<section>
+<div class="section-num">01 — RISK BY SEGMENT</div>
+<h2>Groups have the highest rate—not the largest cancellation count</h2>
+<p class="section-sub">Cancellation rates among the displayed market segments. Groups: 61.1% versus 37.0% overall in the combined view—about 1.65 times, not more than double.</p>
+<div class="chart-box"><canvas aria-label="Groups have the highest rate—not the largest cancellation count" id="chartSegment" role="img">Chart requires JavaScript; source summaries are downloadable below.</canvas></div>
+<div class="insight">
+<span class="insight-icon">→</span>
+<span id="insight-segment">Loading…</span>
+</div>
+</section>
+<section>
+<div class="section-num">02 — SEASONALITY</div>
+<h2>Monthly rates and booking counts require different denominators</h2>
+<p class="section-sub">Published monthly ADR and booking counts. Counts cover a smaller population than the headline; July and August occur three times in the stated window, other months twice.</p>
+<div class="chart-box"><canvas aria-label="Monthly rates and booking counts require different denominators" id="chartSeasonal" role="img">Chart requires JavaScript; source summaries are downloadable below.</canvas></div>
+<div class="insight">
+<span class="insight-icon">→</span>
+<span id="insight-seasonal">Loading…</span>
+</div>
+</section>
+<section>
+<div class="section-num">03 — CHANNEL ECONOMICS</div>
+<h2>Channel volume is not the same as channel profitability</h2>
+<p class="section-sub">Published revenue measure and cancellation rate for the three displayed distribution channels. Revenue definition and commission treatment are unverified.</p>
+<div class="chart-box"><canvas aria-label="Channel volume is not the same as channel profitability" id="chartChannel" role="img">Chart requires JavaScript; source summaries are downloadable below.</canvas></div>
+<div class="insight">
+<span class="insight-icon">→</span>
+<span id="insight-channel">Loading…</span>
+</div>
+</section>
+<section>
+<div class="section-num">04 — BOOKING WINDOW</div>
+<h2>Longer booking windows are associated with more cancellations</h2>
+<p class="section-sub">Descriptive cancellation rates across unequal lead-time bands. The pattern does not establish a linear relationship or a causal effect of booking earlier.</p>
+<div class="chart-box"><canvas aria-label="Longer booking windows are associated with more cancellations" id="chartLeadtime" role="img">Chart requires JavaScript; source summaries are downloadable below.</canvas></div>
+<div class="insight">
+<span class="insight-icon">→</span>
+<span id="insight-leadtime">Loading…</span>
+</div>
+<div class="stamp">
+<div class="stamp-label">⚠ Data Quality Note</div>
+<p>The source’s “Non Refund” group has a <strong id="stamp-rate">—</strong> cancellation rate. The dataset authors define deposit type from payments recorded before arrival or cancellation; it is not simply a randomized policy assignment at booking. This does not establish that deposits cause cancellations, nor that the result is a known reservation-status error. Verify collection timing, payment treatment and group composition before using it for policy or prediction. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6297060/">Dataset documentation ↗</a></p>
+</div>
+</section>
 
-  <header>
-    <div class="dt-editorial"><div><div class="dt-overline">Data Analysis — SQL &amp; Interactive Visualization</div>
-    <h1>The Booking<br><em>Ledger.</em></h1>
-    <p class="subhead">Which hotel bookings are actually reliable, and where should revenue-protection efforts focus? An analysis of 119,389 real bookings across a city hotel and a resort property.</p></div><div class="dt-art"><span class="dt-art-label">FIG. 01 / AN INDEPENDENT PERSPECTIVE</span><svg viewBox="0 0 500 300" aria-hidden="true" fill="none" style="color:#e0b48b"><g transform="translate(80 35) rotate(-8 160 100)"><rect x="0" y="0" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="0" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="0" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="0" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="25" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="25" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="25" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="50" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="50" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="50" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="50" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="75" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="75" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="75" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="100" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="100" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="100" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="100" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="125" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="125" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="125" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="150" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="30" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="90" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="150" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="150" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="210" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="150" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="270" y="150" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="0" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="30" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="60" y="175" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="90" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="120" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="150" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="180" y="175" width="21" height="15" fill="#df8f69" opacity=".65"/><rect x="210" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="240" y="175" width="21" height="15" fill="currentColor" opacity=".65"/><rect x="270" y="175" width="21" height="15" fill="currentColor" opacity=".65"/></g></svg><span class="dt-art-foot">DAIKI TAKIZAWA · RESEARCH & ANALYTICS</span></div></div>
-    <div class="keytag-row">
-      <span class="keytag-label">Filter:</span>
-      <button class="keytag active" data-hotel="All">⌂ Both Hotels</button>
-      <button class="keytag" data-hotel="City Hotel">⌂ City Hotel</button>
-      <button class="keytag" data-hotel="Resort Hotel">⌂ Resort Hotel</button>
-    </div>
-
-    <div class="kpi-grid">
-      <div class="kpi">
-        <div class="kpi-label">Total Bookings</div>
-        <div class="kpi-value" id="kpi-total">—</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-label">Cancellation Rate</div>
-        <div class="kpi-value" id="kpi-cancel">—</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-label">Avg. Daily Rate</div>
-        <div class="kpi-value" id="kpi-adr">—</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-label">Avg. Lead Time</div>
-        <div class="kpi-value" id="kpi-lead">—</div>
-      </div>
-    </div>
-  </header>
-
-  <section>
-    <div class="section-num">01 — RISK BY SEGMENT</div>
-    <h2>Group bookings cancel at more than double the average</h2>
-    <p class="section-sub">Cancellation rate by market segment. Sorted highest to lowest risk.</p>
-    <div class="chart-box"><canvas id="chartSegment"></canvas></div>
-    <div class="insight">
-      <span class="insight-icon">→</span>
-      <span id="insight-segment">Loading…</span>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-num">02 — SEASONALITY</div>
-    <h2>Demand and price move together — but not identically by property</h2>
-    <p class="section-sub">Average daily rate by arrival month, with booking volume shown for context. Toggle the hotel filter above to compare.</p>
-    <div class="chart-box"><canvas id="chartSeasonal"></canvas></div>
-    <div class="insight">
-      <span class="insight-icon">→</span>
-      <span id="insight-seasonal">Loading…</span>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-num">03 — CHANNEL ECONOMICS</div>
-    <h2>The channel bringing the most revenue also brings the most risk</h2>
-    <p class="section-sub">Realized revenue by distribution channel (bars), with cancellation rate overlaid (line).</p>
-    <div class="chart-box"><canvas id="chartChannel"></canvas></div>
-    <div class="insight">
-      <span class="insight-icon">→</span>
-      <span id="insight-channel">Loading…</span>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-num">04 — BOOKING WINDOW</div>
-    <h2>The earlier the booking, the less reliable it is</h2>
-    <p class="section-sub">Cancellation rate climbs almost linearly with how far in advance a booking is made.</p>
-    <div class="chart-box"><canvas id="chartLeadtime"></canvas></div>
-    <div class="insight">
-      <span class="insight-icon">→</span>
-      <span id="insight-leadtime">Loading…</span>
-    </div>
-
-    <div class="stamp">
-      <div class="stamp-label">⚠ Data Quality Note</div>
-      <p>Bookings marked <strong>"Non Refund"</strong> show a <strong id="stamp-rate">—</strong> cancellation rate — nearly all of them. This is <em>not</em> a signal that non-refundable deposits cause cancellations (guests forfeiting money makes no business sense as a driver). It's a known artifact in how this dataset's <code>reservation_status</code> field was recorded. Worth flagging as a reminder to sanity-check counter-intuitive findings against how the underlying data was actually collected — a number can be technically correct and still misleading.</p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="section-num">METHODOLOGY</div>
-    <p>Built by loading the raw dataset into SQLite and answering each business question with SQL (heavy use of <code>GROUP BY</code>, aggregate functions, and <code>CASE WHEN</code> bucketing), then visualizing results interactively here. Dataset: 119,389 bookings from a city hotel (Lisbon) and resort hotel (Algarve), July 2015–August 2017 — Antonio, Almeida &amp; Nunes (2019), <em>Data in Brief</em>. Original prices in EUR, converted to CAD at 1 EUR = 1.61 CAD (Aug 2026 rate) for a Canadian audience.</p>
-    <div class="tools-row">
-      <span class="tool-pill">SQL / SQLite</span>
-      <span class="tool-pill">Python</span>
-      <span class="tool-pill">Chart.js</span>
-      <span class="tool-pill">119,389 rows</span>
-    </div>
-    <p><a href="analysis_queries.sql">→ View all SQL queries used in this analysis</a></p>
-  </footer>
+<section id="priority"><div class="section-num">05 — RISK × VOLUME</div><h2>Online travel agents account for more cancellations than Groups</h2><p>In the combined view, Online TA has a lower cancellation rate than Groups, but almost three times as many bookings. Multiplying each group’s count by its reported rate gives approximately <strong>20,727 cancellations for Online TA</strong>, versus <strong>12,105 for Groups</strong>. The two segments represent about <strong>74% of estimated cancellations among displayed segments</strong>.</p><div class="table-scroll"><table><caption id="priority-caption">Cancellation priorities</caption><thead><tr><th>Market segment</th><th>Bookings</th><th>Cancellation rate</th><th>Estimated cancellations</th><th>Share of displayed cancellations</th></tr></thead><tbody id="priority-rows"></tbody></table></div><p class="small">Estimated counts = bookings × rounded cancellation rate. Rounding is not sampling uncertainty: a rate rounded to 0.1 percentage point implies a possible count difference of about ±0.0005 × bookings. For Online TA in the combined view, that is about ±28 records. The displayed segments omit two records; shares use only the displayed segments.</p><div class="insight"><strong>Practical implication:</strong> a modest improvement in a large segment may prevent more cancellations than a large improvement in a small one. Actual priorities also depend on whether cancellations can be prevented, the cost of doing so, and whether rooms would otherwise be resold.</div><p id="lead-detail"></p><p>Market segment, distribution channel and booking window are overlapping descriptions of the same bookings. Their estimated cancellation counts must not be added together, and the summaries cannot identify the intersection “Online TA bookings over 100 days.”</p></section>
+<section id="mix"><div class="section-num">06 — COMPARING LIKE BOOKING WINDOWS</div><h2>The city–resort gap remains after adjusting for lead-time mix</h2><p>City Hotel has more long-lead bookings, so part of the difference could reflect its booking mix. Assign both hotels the same proportions across the four lead-time bands while retaining each hotel’s rate within each band.</p><div class="table-scroll"><table><caption>Descriptive comparison using the four lead-time summaries</caption><thead><tr><th>Property</th><th>Observed rate, recomputed</th><th>Common lead-time mix</th></tr></thead><tbody><tr><th>City Hotel</th><td>41.73%</td><td>40.70%</td></tr><tr><th>Resort Hotel</th><td>27.76%</td><td>29.46%</td></tr></tbody></table></div><div class="bridge"><div><span>Observed gap</span><strong>13.97 pp</strong></div><div><span>Common-mix gap</span><strong>11.24 pp</strong></div><div><span>Reduction under reweighting</span><strong>2.73 pp</strong></div></div><p><strong>Booking-window mix alone does not account for the difference.</strong> City Hotel’s reported cancellation rate is higher within every band. The common-mix comparison leaves an 11.24-percentage-point gap; customer composition, contract terms, prices and dates may still differ.</p><details><summary>How the calculation works</summary><p>Use the combined dataset’s booking share in each lead-time band as a common weight. Multiply each property’s band-specific cancellation rate by these weights and sum. The observed rate uses the property’s own weights. This adjusts one dimension only, using rounded aggregate rates. It is not a causal effect of hotel type or a prediction for changing the booking mix. The source label “100+” is interpreted as 101+ because the preceding band includes day 100 and the source sort key is 101; the original SQL is needed to verify that boundary.</p></details></section>
+<section id="calendar"><div class="section-num">07 — CORRECTING THE CALENDAR COMPARISON</div><h2>August’s total includes an extra year of observations</h2><p>The page states a July 2015–August 2017 window. If that coverage is complete, July and August appear three times and every other month twice. Comparing their raw counts exaggerates their relative volume.</p><p>In the combined monthly series, August has 8,638 records versus May’s 7,114. Dividing by month occurrences gives approximately <strong>2,879 per August</strong> and <strong>3,557 per May</strong>. May becomes the highest-volume month on this limited normalization. It does not become the month with proven highest demand or occupancy.</p><div class="table-scroll"><table><caption id="calendar-caption">Calendar comparison</caption><thead><tr><th>Arrival month</th><th>Published count</th><th>Month occurrences assumed</th><th>Count per occurrence</th><th>Published ADR (CA$)</th></tr></thead><tbody id="calendar-rows"></tbody></table></div><p><strong>The population also needs reconciliation.</strong> Monthly counts sum to 75,166, not 119,389. That is close to the non-canceled population implied by the headline cancellation rate, suggesting—but not confirming—a non-canceled-booking filter. Until the SQL is recovered, call these published monthly counts, not total demand.</p><p>For a stronger seasonal analysis, compare the same calendar period across years, account for days per month and available rooms, separate cancellations from arrivals, and distinguish booking-weighted rates from room-night-weighted ADR. A booking count does not measure occupancy; room inventory and nights are missing here.</p></section>
+<section id="channels"><div class="section-num">08 — CHANNEL VALUE, NOT JUST CHANNEL SIZE</div><h2>A lower cancellation rate does not prove a better acquisition channel</h2><div class="table-scroll"><table><caption id="channel-caption">Displayed channel economics</caption><thead><tr><th>Channel</th><th>Bookings</th><th>Cancellation rate</th><th>Published revenue (CA$)</th><th>Revenue per listed booking (CA$)</th></tr></thead><tbody id="channel-rows"></tbody></table></div><p>The final column divides the source’s revenue measure by all listed bookings in that channel, including canceled bookings in the denominator. It is not room rate, customer lifetime value or profit. The revenue numerator’s treatment of nights, deposits and refunds cannot be checked without the original query.</p><p>Compare net contribution after agent commissions, direct-marketing costs, service costs and refunds before shifting budget. Direct bookings may be different customers choosing different stays. Lower historical cancellations do not show that moving an otherwise identical booking to Direct would change its behavior.</p></section>
+<section id="economics"><div class="section-num">09 — WHEN DOES AN INTERVENTION PAY?</div><h2>Preventing a cancellation matters only if it adds net value</h2><p>A canceled room may be resold, sometimes at a better rate. Retained deposits may offset part of the loss. Therefore, estimated cancellations multiplied by ADR is not a defensible revenue-loss estimate.</p><div class="scenario"><h3>Illustrative break-even calculator</h3><p>Use the selected hotel’s segment volume as a historical reference cohort. Specify an absolute reduction in cancellation probability, incremental value per prevented cancellation, and cost per booking contacted. These are assumptions—not estimated treatment effects or a forecast.</p><div class="controls"><label>Target segment<select id="target-segment"></select></label><label>Absolute reduction (percentage points)<input id="reduction" max="100" min="0" step="0.1" type="number" value="2"/></label><label>Incremental value per prevented cancellation (CA$)<input id="value" min="0" step="1" type="number" value="100"/></label><label>Cost per booking contacted (CA$)<input id="contact-cost" min="0" step="0.1" type="number" value="1"/></label></div><p aria-live="polite" id="scenario-result"></p><p class="small">Expected net value = bookings × [(reduction in percentage points ÷ 100) × incremental value − contact cost]. The value assumption must reflect room resale, variable service costs and changes in deposit or cancellation-fee income; contact cost should include allocated setup costs. The scenario assumes every booking in the selected segment is contacted. Fractional expected counts are possible. A 2-point reduction means 36.7% becomes 34.7%, not a 2% relative reduction.</p></div><p>Risk is not responsiveness: the bookings most likely to cancel may be least affected by a reminder or flexible rebooking offer. Choose interventions based on measured incremental value, not cancellation probability alone.</p></section>
+<section id="decision"><div class="section-num">10 — A DECISION A HOTEL MANAGER CAN TEST</div><h2>Protect contribution, not the cancellation metric alone</h2><div class="table-scroll"><table><caption>Priorities and the evidence needed to act</caption><thead><tr><th>Priority</th><th>Evidence now</th><th>Next decision test</th></tr></thead><tbody><tr><th>Investigate Online TA and Groups separately</th><td>Largest estimated cancellation counts among displayed market segments</td><td>Identify when cancellations occur, whether inventory resells and which offers retain profitable stays.</td></tr><tr><th>Investigate City Hotel within matched booking windows</th><td>11.24-point gap remains under a common lead-time mix</td><td>Compare similar arrival dates, customer segments and rate terms before attributing the gap to property operations.</td></tr><tr><th>Rebuild the seasonal denominator</th><td>Unequal month coverage and a smaller monthly population</td><td>Separate arrivals, cancellations, room nights and inventory for a consistent year-over-year comparison.</td></tr></tbody></table></div><h3>A focused pilot</h3><p>With future booking records, randomly assign eligible bookings to the current process or a reminder/reconfirmation offer, respecting group-booking clusters. Define eligibility, contact timing, a meaningful minimum effect and test duration in advance. Measure net contribution over completed stay outcomes, including resale, refunds and contact costs. Track cancellation timing, conversion to stays, guest complaints and repeat bookings as secondary outcomes. A reminder that brings cancellations forward may help resell rooms even if it does not lower the final cancellation rate.</p><h3>If a prediction model is developed</h3><p>Use only fields available at the moment a decision is made. Exclude final reservation status and final-status date, and verify timestamps for deposits, changes and room assignments. Train on earlier periods and test on later ones, with repeated guests or group reservations handled to avoid leakage. Assess calibration and economic value, rather than accuracy alone. The published summaries cannot support training or validating such a model.</p><div class="insight"><strong>Conclusion for management:</strong> prioritize the combination of cancellation volume, preventability and incremental value. The summaries point toward Online TA, Groups and long booking windows for investigation, while the property comparison shows that lead-time mix is only part of the city–resort difference. Test a specific intervention before changing channel strategy, deposit policy or overbooking levels.</div></section>
+<footer id="methods"><div class="section-num">METHODS, LIMITS &amp; REPRODUCIBILITY</div><p>This revision uses the <a href="https://takizawadaiki.github.io/hotel-booking-analysis/">original page’s</a> embedded summaries, retrieved September 17, 2026. Its public repository contains only HTML and the linked SQL file returns 404. The original dataset and notebook are unavailable to this project. No replacement dataset has been substituted.</p><p>The original study cites Antonio, Almeida &amp; Nunes (2019), <a href="https://doi.org/10.1016/j.dib.2018.11.126">Hotel booking demand datasets</a>. The paper’s deposit definition informs the revised caution; it does not validate this dashboard’s cleaning or derived fields.</p><div class="table-scroll"><table><caption>Combined-view population audit</caption><thead><tr><th>View</th><th>Displayed records</th><th>Difference from headline</th></tr></thead><tbody><tr><th>Headline</th><td>119,389</td><td>—</td></tr><tr><th>Market segments</th><td>119,387</td><td>2 fewer</td></tr><tr><th>Channels</th><td>119,191</td><td>198 fewer</td></tr><tr><th>Monthly series</th><td>75,166</td><td>44,223 fewer</td></tr><tr><th>Lead time / deposits</th><td>119,389 each</td><td>0</td></tr></tbody></table></div><p>Different summaries may intentionally exclude records, but missing query logic prevents verifying why. Rounded rates yield approximate cancellation counts that need not reconcile exactly across dimensions. Common-mix estimates adjust only lead-time bands. Calendar normalization assumes complete coverage of the stated date window; it does not adjust for unequal month lengths, growth or changing inventory.</p><p>The original CAD conversion factor of 1.61 is retained solely for consistency and is not presented as a verified August 2026 market rate. Published “revenue” is not relabeled as verified realized income or profit. No causal treatment effects, room-loss estimates or current-market conclusions are claimed.</p><div class="research-links"><a download="" href="aggregate-data.json">Source summaries</a><a download="" href="analysis-results.json">Calculated results</a><a download="" href="reanalysis.py">Reproduction script</a><a href="README.md">Methods &amp; update instructions</a></div></footer>
 
 </div>
-
 <script>
 const DATA = {"All": {"kpis": {"total": 119389.0, "cancel_rate": 37.0, "avg_adr": 160.98, "avg_lead": 104.0}, "segment": [{"market_segment": "Groups", "total": 19811, "cancel_rate": 61.1}, {"market_segment": "Online TA", "total": 56477, "cancel_rate": 36.7}, {"market_segment": "Offline TA/TO", "total": 24218, "cancel_rate": 34.3}, {"market_segment": "Aviation", "total": 237, "cancel_rate": 21.9}, {"market_segment": "Corporate", "total": 5295, "cancel_rate": 18.7}, {"market_segment": "Direct", "total": 12606, "cancel_rate": 15.3}, {"market_segment": "Complementary", "total": 743, "cancel_rate": 13.1}], "seasonal": [{"month": "January", "adr": 107.87, "bookings": 4122}, {"month": "February", "adr": 116.6, "bookings": 5372}, {"month": "March", "adr": 124.5, "bookings": 6645}, {"month": "April", "adr": 157.59, "bookings": 6565}, {"month": "May", "adr": 168.79, "bookings": 7114}, {"month": "June", "adr": 184.49, "bookings": 6404}, {"month": "July", "adr": 208.09, "bookings": 7919}, {"month": "August", "adr": 228.76, "bookings": 8638}, {"month": "September", "adr": 172.72, "bookings": 6392}, {"month": "October", "adr": 139.8, "bookings": 6914}, {"month": "November", "adr": 113.52, "bookings": 4672}, {"month": "December", "adr": 127.06, "bookings": 4409}], "channel": [{"channel": "TA/TO", "revenue": 9442919.0, "cancel_rate": 41.0, "total": 97869}, {"channel": "Direct", "revenue": 2063690.0, "cancel_rate": 17.5, "total": 14645}, {"channel": "Corporate", "revenue": 563325.0, "cancel_rate": 22.1, "total": 6677}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 9.6, "total": 19746}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 27.9, "total": 18960}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 38.5, "total": 33323}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 51.1, "total": 47360}], "deposit": [{"deposit_type": "Non Refund", "total": 14586, "cancel_rate": 99.4}, {"deposit_type": "No Deposit", "total": 104641, "cancel_rate": 28.4}, {"deposit_type": "Refundable", "total": 162, "cancel_rate": 22.2}]}, "City Hotel": {"kpis": {"total": 79329.0, "cancel_rate": 41.7, "avg_adr": 170.26, "avg_lead": 109.7}, "segment": [{"market_segment": "Groups", "total": 13975, "cancel_rate": 68.9}, {"market_segment": "Offline TA/TO", "total": 16746, "cancel_rate": 42.8}, {"market_segment": "Online TA", "total": 38748, "cancel_rate": 37.4}, {"market_segment": "Aviation", "total": 237, "cancel_rate": 21.9}, {"market_segment": "Corporate", "total": 2986, "cancel_rate": 21.5}, {"market_segment": "Direct", "total": 6093, "cancel_rate": 17.3}, {"market_segment": "Complementary", "total": 542, "cancel_rate": 11.8}], "seasonal": [{"month": "January", "adr": 132.28, "bookings": 2254}, {"month": "February", "adr": 138.75, "bookings": 3064}, {"month": "March", "adr": 145.17, "bookings": 4072}, {"month": "April", "adr": 180.09, "bookings": 4015}, {"month": "May", "adr": 193.92, "bookings": 4579}, {"month": "June", "adr": 189.5, "bookings": 4366}, {"month": "July", "adr": 186.05, "bookings": 4782}, {"month": "August", "adr": 190.64, "bookings": 5381}, {"month": "September", "adr": 181.29, "bookings": 4290}, {"month": "October", "adr": 163.82, "bookings": 4337}, {"month": "November", "adr": 139.27, "bookings": 2696}, {"month": "December", "adr": 141.45, "bookings": 2392}], "channel": [{"channel": "TA/TO", "revenue": 6504661.0, "cancel_rate": 45.0, "total": 68944}, {"channel": "Direct", "revenue": 986159.0, "cancel_rate": 18.2, "total": 6780}, {"channel": "Corporate", "revenue": 349420.0, "cancel_rate": 23.1, "total": 3408}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 12.2, "total": 10808}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 30.9, "total": 12554}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 40.7, "total": 23529}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 56.5, "total": 32438}], "deposit": [{"deposit_type": "Non Refund", "total": 12867, "cancel_rate": 99.8}, {"deposit_type": "Refundable", "total": 20, "cancel_rate": 70.0}, {"deposit_type": "No Deposit", "total": 66442, "cancel_rate": 30.5}]}, "Resort Hotel": {"kpis": {"total": 40060.0, "cancel_rate": 27.8, "avg_adr": 146.17, "avg_lead": 92.7}, "segment": [{"market_segment": "Groups", "total": 5836, "cancel_rate": 42.4}, {"market_segment": "Online TA", "total": 17729, "cancel_rate": 35.2}, {"market_segment": "Complementary", "total": 201, "cancel_rate": 16.4}, {"market_segment": "Offline TA/TO", "total": 7472, "cancel_rate": 15.2}, {"market_segment": "Corporate", "total": 2309, "cancel_rate": 15.2}, {"market_segment": "Direct", "total": 6513, "cancel_rate": 13.5}], "seasonal": [{"month": "January", "adr": 78.42, "bookings": 1868}, {"month": "February", "adr": 87.18, "bookings": 2308}, {"month": "March", "adr": 91.79, "bookings": 2573}, {"month": "April", "adr": 122.15, "bookings": 2550}, {"month": "May", "adr": 123.42, "bookings": 2535}, {"month": "June", "adr": 173.75, "bookings": 2038}, {"month": "July", "adr": 241.69, "bookings": 3137}, {"month": "August", "adr": 291.75, "bookings": 3257}, {"month": "September", "adr": 155.24, "bookings": 2102}, {"month": "October", "adr": 99.39, "bookings": 2577}, {"month": "November", "adr": 78.37, "bookings": 1976}, {"month": "December", "adr": 110.0, "bookings": 2017}], "channel": [{"channel": "TA/TO", "revenue": 2938256.0, "cancel_rate": 31.5, "total": 28925}, {"channel": "Direct", "revenue": 1077531.0, "cancel_rate": 16.8, "total": 7865}, {"channel": "Corporate", "revenue": 213905.0, "cancel_rate": 21.0, "total": 3269}], "leadtime": [{"bucket": "0-7 days", "sortkey": 0, "cancel_rate": 6.5, "total": 8938}, {"bucket": "8-30 days", "sortkey": 8, "cancel_rate": 21.9, "total": 6406}, {"bucket": "31-100 days", "sortkey": 31, "cancel_rate": 33.1, "total": 9794}, {"bucket": "100+ days", "sortkey": 101, "cancel_rate": 39.5, "total": 14922}], "deposit": [{"deposit_type": "Non Refund", "total": 1719, "cancel_rate": 96.0}, {"deposit_type": "No Deposit", "total": 38199, "cancel_rate": 24.7}, {"deposit_type": "Refundable", "total": 142, "cancel_rate": 15.5}]}};
 
@@ -401,7 +393,7 @@ function render(hotel){
   const peakMonth = d.seasonal.reduce((a,b)=> b.adr > a.adr ? b : a);
   const lowMonth = d.seasonal.reduce((a,b)=> b.adr < a.adr ? b : a);
   document.getElementById('insight-seasonal').innerHTML =
-    `Rates peak in <strong>${peakMonth.month}</strong> (CA$${peakMonth.adr}) and bottom out in <strong>${lowMonth.month}</strong> (CA$${lowMonth.adr}) — a ${Math.round((peakMonth.adr/lowMonth.adr - 1)*100)}% swing across the year.`;
+    `Rates peak in <strong>${peakMonth.month}</strong> (CA$${peakMonth.adr}) and bottom out in <strong>${lowMonth.month}</strong> (CA$${lowMonth.adr}) — a ${Math.round((peakMonth.adr/lowMonth.adr - 1)*100)}% swing across the pooled arrival-month averages.`;
 
   // --- Chart 3: Channel ---
   const chLabels = d.channel.map(ch => ch.channel);
@@ -427,7 +419,7 @@ function render(hotel){
   });
   const topChannel = d.channel[0];
   document.getElementById('insight-channel').innerHTML =
-    `<strong>${topChannel.channel}</strong> generates CA$${(topChannel.revenue/1000).toFixed(0)}k in realized revenue — by far the most of any channel — but cancels at <strong>${topChannel.cancel_rate}%</strong>, notably higher than Direct bookings.`;
+    `<strong>${topChannel.channel}</strong> generates CA$${(topChannel.revenue/1000).toFixed(0)}k in published revenue — by far the most of any channel — but cancels at <strong>${topChannel.cancel_rate}%</strong>, notably higher than Direct bookings.`;
 
   // --- Chart 4: Lead time ---
   const ltLabels = d.leadtime.map(l => l.bucket);
@@ -448,17 +440,18 @@ function render(hotel){
   });
   const first = d.leadtime[0], last = d.leadtime[d.leadtime.length-1];
   document.getElementById('insight-leadtime').innerHTML =
-    `Bookings made ${last.bucket} in advance cancel at <strong>${last.cancel_rate}%</strong> — over ${(last.cancel_rate/first.cancel_rate).toFixed(1)}x the rate of bookings made ${first.bucket} out (${first.cancel_rate}%).`;
+    `Bookings made ${last.bucket} in advance cancel at <strong>${last.cancel_rate}%</strong> — about ${(last.cancel_rate/first.cancel_rate).toFixed(1)}x the rate of bookings made ${first.bucket} out (${first.cancel_rate}%).`;
 
   // Data quality stamp
   const nonRefund = d.deposit.find(x => x.deposit_type === 'Non Refund');
   if(nonRefund) document.getElementById('stamp-rate').textContent = nonRefund.cancel_rate + '%';
+ renderExtra(hotel);
 }
 
 document.querySelectorAll('.keytag').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.keytag').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    document.querySelectorAll('.keytag').forEach(b => {b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+    btn.classList.add('active');btn.setAttribute('aria-pressed','true');
     currentHotel = btn.dataset.hotel;
     render(currentHotel);
   });
@@ -468,7 +461,39 @@ Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
 Chart.defaults.font.size = 12;
 Chart.defaults.color = '#bdb29e';
 
+
+function number(n){return n.toLocaleString('en-CA',{maximumFractionDigits:0});}
+function cash(n){return (n<0?'−':'')+'CA$'+Math.abs(n).toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function renderExtra(hotel){
+ const d=DATA[hotel], label=hotel==='All'?'Both hotels':hotel;
+ const sum=d.segment.reduce((t,r)=>t+r.total*r.cancel_rate/100,0);
+ const rows=[...d.segment].sort((x,y)=>y.total*y.cancel_rate-x.total*x.cancel_rate);
+ document.getElementById('priority-caption').textContent=label+' · estimated cancellation volume';
+ document.getElementById('priority-rows').innerHTML=rows.map(r=>`<tr><th>${r.market_segment}</th><td>${number(r.total)}</td><td>${r.cancel_rate}%</td><td>≈${number(r.total*r.cancel_rate/100)}</td><td>${(r.total*r.cancel_rate/sum).toFixed(1)}%</td></tr>`).join('');
+ const lead=d.leadtime[d.leadtime.length-1], leadTotal=d.leadtime.reduce((t,r)=>t+r.total*r.cancel_rate/100,0);
+ document.getElementById('lead-detail').textContent=`${label}: the longest lead-time band contains ${(100*lead.total/d.kpis.total).toFixed(1)}% of bookings and approximately ${(lead.total*lead.cancel_rate/leadTotal).toFixed(1)}% of estimated cancellations in the lead-time summary. This is a separate view of the same population, not an additional set of losses.`;
+ document.getElementById('calendar-caption').textContent=label+' · counts normalized to month occurrences';
+ document.getElementById('calendar-rows').innerHTML=d.seasonal.map(r=>{const n=['July','August'].includes(r.month)?3:2;return `<tr><th>${r.month}</th><td>${number(r.bookings)}</td><td>${n}</td><td>${(r.bookings/n).toFixed(1)}</td><td>${r.adr.toFixed(2)}</td></tr>`;}).join('');
+ document.getElementById('channel-caption').textContent=label+' · three published channels';
+ document.getElementById('channel-rows').innerHTML=d.channel.map(r=>`<tr><th>${r.channel}</th><td>${number(r.total)}</td><td>${r.cancel_rate}%</td><td>${number(r.revenue)}</td><td>${(r.revenue/r.total).toFixed(2)}</td></tr>`).join('');
+ const select=document.getElementById('target-segment');const previous=select.value||'Online TA';
+ select.innerHTML=d.segment.map(r=>`<option>${r.market_segment}</option>`).join('');select.value=d.segment.some(r=>r.market_segment===previous)?previous:d.segment[0].market_segment;
+ renderScenario();
+}
+function renderScenario(){
+ const r=DATA[currentHotel].segment.find(x=>x.market_segment===document.getElementById('target-segment').value);
+ const reduction=document.getElementById('reduction').valueAsNumber, value=document.getElementById('value').valueAsNumber,cost=document.getElementById('contact-cost').valueAsNumber;
+ const output=document.getElementById('scenario-result');
+ if(![reduction,value,cost].every(Number.isFinite)||Math.min(reduction,value,cost)<0||reduction>r.cancel_rate){output.textContent='Enter non-negative assumptions; the percentage-point reduction cannot exceed the segment’s current cancellation rate.';return;}
+ const prevented=r.total*reduction/100,net=prevented*value-r.total*cost;
+ let threshold=value>0?`${(100*cost/value).toFixed(2)} percentage points`:cost===0?'0 percentage points (no gain at zero value)':'unreachable with zero incremental value';
+ if(value>0&&100*cost/value>r.cancel_rate)threshold+=' (exceeds this segment’s baseline rate)';
+ output.textContent=`${number(r.total)} bookings × ${reduction.toFixed(1)} points implies ${prevented.toFixed(1)} fewer cancellations in expectation. Net value after contact costs: ${cash(net)}. Break-even reduction: ${threshold}.`;
+}
+['target-segment','reduction','value','contact-cost'].forEach(id=>document.getElementById(id).addEventListener('input',renderScenario));
+
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) Chart.defaults.animation=false;
 render('All');
 </script>
-<div class="dt-footer"><span>Daiki Takizawa · Hospitality analytics</span><a href="/index.html#projects">Back to the portfolio ↗</a></div></body>
+<div class="dt-footer"><span>Daiki Takizawa · Hospitality analytics</span><a href="https://takizawadaiki.github.io/index.html#projects">Back to the portfolio ↗</a></div></body>
 </html>
